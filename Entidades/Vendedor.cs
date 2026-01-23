@@ -8,10 +8,10 @@ namespace Entidades
 {
     public class Vendedor
     {
-        private int IDVendedor { get; set; }
-        private string Nombre { get; set; }
-        private string Apellido { get; set; }
-        private int IDSucursal { get; set; }
+        public int IDVendedor { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public int IDSucursal { get; set; }
         public Vendedor(int idVendedor, string nombre, string apellido, int idSucursal)
         {
             IDVendedor = idVendedor;

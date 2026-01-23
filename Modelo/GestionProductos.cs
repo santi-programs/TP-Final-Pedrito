@@ -65,5 +65,15 @@ namespace Modelo
             }
         }
 
+        public List<Producto> BuscarProductosPorSucursal(string sucursal)
+        {
+            using (var context = new Context())
+            {
+                return context.Productos
+                              .Where(p => p.Sucursal.Contains(sucursal))
+                              .ToList();
+            }
+        }
+
     }
 }

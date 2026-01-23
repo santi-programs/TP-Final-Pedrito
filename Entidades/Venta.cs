@@ -8,15 +8,17 @@ namespace Entidades
 {
     public class Venta
     {
-        private int Id { get; set; }
-        private int IDCliente { get; set; }
-        private int Cliente { get; set; }
+        public int IdVenta { get; set; }
+        public int IDCliente { get; set; }
+        public int Cliente { get; set; }
+        public decimal Monto { get; set; }
 
-        public Venta (int id, int idCliente, int cliente)
+        public Venta (int id, int idCliente, int cliente, decimal monto)
         {
-            Id = id;
+            IdVenta = id;
             IDCliente = idCliente;
             Cliente = cliente;
+            Monto = monto;
         }
     }
 }

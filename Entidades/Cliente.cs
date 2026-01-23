@@ -6,13 +6,14 @@ namespace Entidades
 {
     public class Cliente
     {
-        private int IDCliente { get; set; }
-        private string Nombre { get; set; }
-        private string Apellido { get; set; }
-        private string DNI { get; set; }
-        private bool MinoristaMayorista { get; set; }
-        private string Telefono { get; set; }
-      
+        public int IDCliente { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public string DNI { get; set; }
+        public bool MinoristaMayorista { get; set; }
+        public string Telefono { get; set; }
+        public virtual ICollection<Venta> ventas { get; set; } = new List<Venta>();
+
 
         public Cliente(int idCliente, string nombre, string apellido,string dni, bool minoristaMayorista, string telefono ) 
         { 
@@ -23,5 +24,7 @@ namespace Entidades
            MinoristaMayorista = minoristaMayorista;
            Telefono = telefono;
         }
+
+       
     }
 }

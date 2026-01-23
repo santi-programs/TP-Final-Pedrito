@@ -10,18 +10,18 @@ namespace Entidades
 {
     public class ReporteConsulta
     {
-        private DateTime Fecha { get; set; }
-        private string Producto { get; set; }
-        private string Sucursal { get; set; }
-        private int IDVendedor { get; set; }
-        private int IDSucursal { get; set; }
-        public ReporteConsulta(DateTime fecha, string producto, string sucursal, int idVendedor, int idSucursal)
+        public DateTime Fecha { get; set; }
+        public string Producto { get; set; }
+        public string Sucursal { get; set; }
+        public int IDVendedor { get; set; }
+        public decimal Monto { get; set; }
+        public ReporteConsulta(DateTime fecha, string producto, string sucursal, int idVendedor, int idSucursal, decimal monto)
         {
             Fecha = fecha;
             Producto = producto;
             Sucursal = sucursal;
             IDVendedor = idVendedor;
-            IDSucursal = idSucursal;
+            Monto = monto;
         }
     }
 }

@@ -1,0 +1,25 @@
+﻿using Modelo;
+using Entidades;
+namespace Controlador
+{
+    public class ControladorCliente
+    {
+        private static ControladorCliente instancia;
+
+        public static ControladorCliente ObtenerInstancia()
+        {
+            if (instancia == null)
+            {
+                instancia = new ControladorCliente();
+            }
+            return instancia;
+        }
+
+        private readonly GestionClientes gestion = GestionClientes.ObtenerInstancia();
+
+        public void Agregar(Cliente c) => gestion.AgregarCliente(c);
+        public void Eliminar(int id) => gestion.EliminarCliente(id);
+        public void Modificar(Cliente c) => gestion.ModificarCliente(c);
+
+    }
+}

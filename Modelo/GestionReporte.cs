@@ -25,7 +25,7 @@ namespace Modelo
 
         public object ObtenerVentasPorSucursal(List<ReporteConsulta> datos)
         {
-            var reporte = datos.GroupBy(d => d.Sucursal)
+            var reporte = datos.GroupBy(d => d.Sucursal.Trim().ToUpper())
                 .Select(g => new
                 {
                     NombreSucursal = g.Key,
@@ -51,7 +51,7 @@ namespace Modelo
 
         public object ObtenerVentasPorProducto(List<ReporteConsulta> datos)
         {
-            var reporte = datos.GroupBy(d => d.Producto)
+            var reporte = datos.GroupBy(d => d.Producto.Trim().ToUpper())
                 .Select(g => new
                 {
                     NombreProducto = g.Key,

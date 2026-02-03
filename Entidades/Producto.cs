@@ -17,6 +17,8 @@ namespace Entidades
 
         public string Sucursal { get; set; }    
 
+        public Producto() {     }
+
         public Producto(int idProducto, string nombre, string descripcion, int categoria, double precio, int stock, string sucursal)
         {
             IDProducto = idProducto;

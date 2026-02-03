@@ -8,9 +8,11 @@ namespace Entidades
 {
     public class Categoria
     {
-        private int IDCategoria { get; set; }
-        private string Nombre { get; set; }
-       
+        public int IDCategoria { get; set; }
+        public string Nombre { get; set; }
+
+        public Categoria() {       }
+
         public Categoria(int idCategoria, string nombre)
         {
             IDCategoria = idCategoria;

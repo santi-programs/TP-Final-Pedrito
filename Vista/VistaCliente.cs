@@ -1,0 +1,87 @@
+﻿using Controlador;
+using Entidades;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Vista
+{
+    public partial class VistaCliente : Form
+    {
+        private ControladorCliente controlador;
+
+        public VistaCliente()
+        {
+            InitializeComponent();
+            controlador = new ControladorCliente();
+        }
+
+        private void btn_Agregar_Click(object sender, EventArgs e)
+        {
+            Cliente c = new Cliente
+            {
+                Nombre = txt_Nombre.Text,
+                Apellido = txt_Apellido.Text,
+                DNI = txt_DNI.Text,
+                MinoristaMayorista = rb_Mayorista.Checked ? true : false,
+                Telefono = txt_Telefono.Text
+            };
+
+            controlador.Agregar(c);
+            MessageBox.Show("Cliente agregado");
+        }
+
+        private void btn_Modificar_Click(object sender, EventArgs e)
+        {
+            Cliente c = new Cliente
+            {
+                IDCliente = int.Parse(txt_ID.Text),
+                Nombre = txt_Nombre.Text,
+                Apellido = txt_Apellido.Text,
+                DNI = txt_DNI.Text,
+                MinoristaMayorista = rb_Mayorista.Checked ? true : false,
+                Telefono = txt_Telefono.Text
+            };
+
+            controlador.Modificar(c);
+            MessageBox.Show("Cliente modificado");
+        }
+
+        private void btn_Eliminar_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(txt_ID.Text);
+            controlador.Eliminar(id);
+            MessageBox.Show("Cliente eliminado");
+        }
+
+        private void btn_Descuento_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(txt_ID.Text);
+            decimal precioBase = decimal.Parse(txt_precio.Text);
+
+            decimal precioFinal = controlador.Descuento(id, precioBase);
+
+            MessageBox.Show(precioFinal.ToString("0.00"));
+        }
+
+        private void btn_Historial_Click(object sender, EventArgs e)
+        {
+
+            int id = int.Parse(txt_ID.Text);
+
+            //Opcion de mostrar en DataGridView o con un form de readOnly
+
+        }
+
+        private void btn_Cerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+    }
+}

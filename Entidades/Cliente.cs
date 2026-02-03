@@ -10,10 +10,11 @@ namespace Entidades
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string DNI { get; set; }
-        public bool MinoristaMayorista { get; set; }
+        public bool MinoristaMayorista { get; set; } // true = mayorista, false = minorista
         public string Telefono { get; set; }
         public virtual ICollection<Venta> ventas { get; set; } = new List<Venta>();
 
+        public Cliente() { }
 
         public Cliente(int idCliente, string nombre, string apellido,string dni, bool minoristaMayorista, string telefono ) 
         { 

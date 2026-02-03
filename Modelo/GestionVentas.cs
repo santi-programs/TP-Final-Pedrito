@@ -66,6 +66,7 @@ namespace Modelo
             }
         }
 
+        //No se guardaron los métodos en el último push que hiciste
         
     }
 }

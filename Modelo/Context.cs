@@ -10,9 +10,10 @@ using System.Threading.Tasks;
 
 namespace Modelo
 {
+    //Con esta clase se llama a la Base de Datos y se crean las tablas
     public class Context : DbContext
     {
-        //Con esta clase se llama a la Base de Datos y se crean las tablas
+        
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Producto> Productos { get; set; }
         public DbSet<Vendedor> Vendedores { get; set; }

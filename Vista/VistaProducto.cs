@@ -82,5 +82,14 @@ namespace Vista
         {
             this.Close();
         }
+
+        private void btn_VistaCategoria_Click(object sender, EventArgs e)
+        {
+            
+            VistaCategoria formCategoria = new VistaCategoria();
+            formCategoria.Show();
+        
+        }
+
     }
 }

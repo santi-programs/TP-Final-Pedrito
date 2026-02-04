@@ -9,16 +9,21 @@ namespace Entidades
     public class Venta
     {
         public int IdVenta { get; set; }
-        public int IDCliente { get; set; }
-        public int Cliente { get; set; }
-        public decimal Monto { get; set; }
+        public int IDProducto { get; set; }
+        public string metodoPago { get; set; }
+        public double Monto { get; set; }
+        public DateTime Fecha { get; set; }
+        public virtual Cliente ClienteRelacion { get; set; }
+        public virtual Producto ProductoRelacion { get; set; }
+        public int Cantidad { get; set; }
 
-        public Venta (int id, int idCliente, int cliente, decimal monto)
+        public Venta(int idVenta, int idProducto, string Mpago, double monto, int cantidad)
         {
-            IdVenta = id;
-            IDCliente = idCliente;
-            Cliente = cliente;
+            IdVenta = idVenta;
+            IDProducto = idProducto;
+            metodoPago = Mpago;
             Monto = monto;
+            Cantidad = cantidad;
         }
     }
 }

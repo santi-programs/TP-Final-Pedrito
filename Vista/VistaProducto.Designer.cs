@@ -50,6 +50,7 @@
             txt_Nombre = new TextBox();
             label1 = new Label();
             label2 = new Label();
+            btn_VistaCategoria = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -57,6 +58,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(0, 0, 64);
+            panel1.Controls.Add(btn_VistaCategoria);
             panel1.Controls.Add(txt_Stock);
             panel1.Controls.Add(txt_Precio);
             panel1.Controls.Add(txt_Sucursal);
@@ -212,7 +214,7 @@
             label7.BackColor = Color.FromArgb(0, 0, 20);
             label7.Font = new Font("SimSun", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.White;
-            label7.Location = new Point(363, 108);
+            label7.Location = new Point(363, 76);
             label7.Name = "label7";
             label7.Size = new Size(31, 20);
             label7.TabIndex = 15;
@@ -220,7 +222,7 @@
             // 
             // txt_ID
             // 
-            txt_ID.Location = new Point(223, 106);
+            txt_ID.Location = new Point(218, 74);
             txt_ID.Name = "txt_ID";
             txt_ID.Size = new Size(125, 27);
             txt_ID.TabIndex = 14;
@@ -230,7 +232,7 @@
             btn_BuscarPorSucursal.BackColor = Color.FromArgb(0, 0, 20);
             btn_BuscarPorSucursal.Font = new Font("Lucida Bright", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_BuscarPorSucursal.ForeColor = SystemColors.ButtonHighlight;
-            btn_BuscarPorSucursal.Location = new Point(695, 366);
+            btn_BuscarPorSucursal.Location = new Point(755, 366);
             btn_BuscarPorSucursal.Name = "btn_BuscarPorSucursal";
             btn_BuscarPorSucursal.Size = new Size(161, 59);
             btn_BuscarPorSucursal.TabIndex = 11;
@@ -243,7 +245,7 @@
             btn_Agregar.BackColor = Color.FromArgb(0, 0, 20);
             btn_Agregar.Font = new Font("Lucida Bright", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_Agregar.ForeColor = SystemColors.ButtonHighlight;
-            btn_Agregar.Location = new Point(471, 366);
+            btn_Agregar.Location = new Point(575, 366);
             btn_Agregar.Name = "btn_Agregar";
             btn_Agregar.Size = new Size(161, 59);
             btn_Agregar.TabIndex = 10;
@@ -303,6 +305,19 @@
             label2.TabIndex = 5;
             label2.Text = "Gestión De Productos";
             // 
+            // btn_VistaCategoria
+            // 
+            btn_VistaCategoria.BackColor = Color.FromArgb(0, 0, 20);
+            btn_VistaCategoria.Font = new Font("Lucida Bright", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_VistaCategoria.ForeColor = SystemColors.ButtonHighlight;
+            btn_VistaCategoria.Location = new Point(388, 366);
+            btn_VistaCategoria.Name = "btn_VistaCategoria";
+            btn_VistaCategoria.Size = new Size(161, 59);
+            btn_VistaCategoria.TabIndex = 30;
+            btn_VistaCategoria.Text = "Categorias";
+            btn_VistaCategoria.UseVisualStyleBackColor = false;
+            btn_VistaCategoria.Click += btn_VistaCategoria_Click;
+            // 
             // VistaProducto
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -348,5 +363,6 @@
         private TextBox txt_Sucursal;
         private Label label10;
         private TextBox txt_Stock;
+        private Button btn_VistaCategoria;
     }
 }

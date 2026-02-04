@@ -24,16 +24,17 @@ namespace Vista
             formProducto.Show();
         }
 
-        private void btn_VistaCategorias_Click(object sender, EventArgs e)
-        {
-            VistaCategoria formCategoria = new VistaCategoria();
-            formCategoria.Show();
-        }
+        
 
         private void btn_VistaReportesConsultas_Click(object sender, EventArgs e)
         {
             VistaReportesConsultas formReportes = new VistaReportesConsultas();
             formReportes.Show();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -30,13 +30,12 @@
         {
             btn_VistaCliente = new Button();
             btn_VistaProducto = new Button();
-            btn_VistaCategorias = new Button();
             btn_VistaReportesConsultas = new Button();
             SuspendLayout();
             // 
             // btn_VistaCliente
             // 
-            btn_VistaCliente.Location = new Point(502, 326);
+            btn_VistaCliente.Location = new Point(404, 222);
             btn_VistaCliente.Name = "btn_VistaCliente";
             btn_VistaCliente.Size = new Size(135, 41);
             btn_VistaCliente.TabIndex = 0;
@@ -46,7 +45,7 @@
             // 
             // btn_VistaProducto
             // 
-            btn_VistaProducto.Location = new Point(468, 211);
+            btn_VistaProducto.Location = new Point(249, 222);
             btn_VistaProducto.Name = "btn_VistaProducto";
             btn_VistaProducto.Size = new Size(135, 41);
             btn_VistaProducto.TabIndex = 1;
@@ -54,19 +53,9 @@
             btn_VistaProducto.UseVisualStyleBackColor = true;
             btn_VistaProducto.Click += btn_VistaProducto_Click;
             // 
-            // btn_VistaCategorias
-            // 
-            btn_VistaCategorias.Location = new Point(456, 100);
-            btn_VistaCategorias.Name = "btn_VistaCategorias";
-            btn_VistaCategorias.Size = new Size(135, 41);
-            btn_VistaCategorias.TabIndex = 2;
-            btn_VistaCategorias.Text = "Categorias";
-            btn_VistaCategorias.UseVisualStyleBackColor = true;
-            btn_VistaCategorias.Click += btn_VistaCategorias_Click;
-            // 
             // btn_VistaReportesConsultas
             // 
-            btn_VistaReportesConsultas.Location = new Point(123, 100);
+            btn_VistaReportesConsultas.Location = new Point(93, 222);
             btn_VistaReportesConsultas.Name = "btn_VistaReportesConsultas";
             btn_VistaReportesConsultas.Size = new Size(135, 41);
             btn_VistaReportesConsultas.TabIndex = 3;
@@ -80,11 +69,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(btn_VistaReportesConsultas);
-            Controls.Add(btn_VistaCategorias);
             Controls.Add(btn_VistaProducto);
             Controls.Add(btn_VistaCliente);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             ResumeLayout(false);
         }
 
@@ -92,7 +81,6 @@
 
         private Button btn_VistaCliente;
         private Button btn_VistaProducto;
-        private Button btn_VistaCategorias;
         private Button btn_VistaReportesConsultas;
     }
 }

@@ -236,7 +236,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
-            ClientSize = new Size(1006, 553);
+            ClientSize = new Size(1021, 553);
             Controls.Add(panel1);
             Controls.Add(label2);
             Name = "VistaReportesConsultas";

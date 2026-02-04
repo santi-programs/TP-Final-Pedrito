@@ -64,18 +64,18 @@ namespace Modelo
 
         //Descuentos para clientes
 
-        private const decimal descuentoMayorista = 0.20m;
-        private const decimal descuentoMinorista = 0.00m;
+        private const double descuentoMayorista = 0.20;
+        private const double descuentoMinorista = 0.00;
 
-        public decimal CalcularDescuento(int idcliente, decimal precioBase)
+        public double CalcularDescuento(int idcliente, double precioBase)
         {
             using (var db = new Context())
             {
                 var cliente = db.Clientes.Find(idcliente);
                 if (cliente == null) return precioBase;
 
-                decimal porcentajeAplicado = cliente.MinoristaMayorista ? descuentoMayorista : descuentoMinorista;
-                decimal descuento = precioBase * porcentajeAplicado;
+                double porcentajeAplicado = cliente.MinoristaMayorista ? descuentoMayorista : descuentoMinorista;
+                double descuento = precioBase * porcentajeAplicado;
                 return precioBase - descuento;
             }
         }
@@ -90,7 +90,7 @@ namespace Modelo
 
                 if (cliente == null) return "Cliente no encontrado";
 
-                decimal descuento = cliente.MinoristaMayorista ? descuentoMayorista : descuentoMinorista;
+                double descuento = cliente.MinoristaMayorista ? descuentoMayorista : descuentoMinorista;
 
                 return new
                 {

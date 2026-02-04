@@ -8,15 +8,19 @@ namespace Entidades
 {
     public class MetodoPago
     {
-        private string Tipo { get; set; }
-        private double Monto { get; set; }
-        private string Detalles { get; set; }
+        public string Tipo { get; set; }
+        public double Monto { get; set; }
+        public string Detalles { get; set; }
+        public int IdMetodo { get; set; }
 
-        public MetodoPago(string tipo, double monto, string detalles)
+
+        public MetodoPago(string tipo, double monto, string detalles, int idMetodo)
         {
             Tipo = tipo;
             Monto = monto;
             Detalles = detalles;
+            IdMetodo = idMetodo;
+
         }
     }
 }

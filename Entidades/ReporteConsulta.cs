@@ -14,8 +14,8 @@ namespace Entidades
         public string Producto { get; set; }
         public string Sucursal { get; set; }
         public int IDVendedor { get; set; }
-        public decimal Monto { get; set; }
-        public ReporteConsulta(DateTime fecha, string producto, string sucursal, int idVendedor, int idSucursal, decimal monto)
+        public double Monto { get; set; }
+        public ReporteConsulta(DateTime fecha, string producto, string sucursal, int idVendedor, int idSucursal, double monto)
         {
             Fecha = fecha;
             Producto = producto;

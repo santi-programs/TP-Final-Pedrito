@@ -134,22 +134,21 @@ namespace Modelo
             }
         }
 
-        public string CrearFactura(int idVenta)
+        public void CrearFactura(int idVenta)
         {
             using (var context = new Context())
             {
                 var venta = context.Ventas.Find(idVenta);
-                if (venta == null) return "Venta no encontrada";
+                if (venta == null) MessageBox.Show("Venta no encontrada");
                 string factura = $"Factura de Venta\n" +
                                  $"ID Venta: {venta.IdVenta}\n" +
                                  $"Cliente: {venta.ClienteRelacion.Nombre} {venta.ClienteRelacion.Apellido}\n" +
                                  $"Monto: {venta.Monto}\n" +
                                  $"Fecha: {venta.Fecha}\n";
-                return factura;
+                MessageBox.Show(factura);
             }
         } 
 
-        //No se guardaron los métodos en el último push que hiciste
 
     }
 }

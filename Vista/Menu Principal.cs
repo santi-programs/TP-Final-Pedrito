@@ -24,7 +24,7 @@ namespace Vista
             formProducto.Show();
         }
 
-        
+
 
         private void btn_VistaReportesConsultas_Click(object sender, EventArgs e)
         {
@@ -36,5 +36,12 @@ namespace Vista
         {
 
         }
+
+        private void btn_Venta_Click(object sender, EventArgs e)
+        {
+            VistaVenta formVenta = new VistaVenta();
+            formVenta.Show();
+        }
     }
 }
+

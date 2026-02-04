@@ -13,9 +13,12 @@ namespace Entidades
         public string metodoPago { get; set; }
         public double Monto { get; set; }
         public DateTime Fecha { get; set; }
+        public int Cantidad { get; set; }
         public virtual Cliente ClienteRelacion { get; set; }
         public virtual Producto ProductoRelacion { get; set; }
-        public int Cantidad { get; set; }
+
+        public Venta() { }
+
 
         public Venta(int idVenta, int idProducto, string Mpago, double monto, int cantidad)
         {

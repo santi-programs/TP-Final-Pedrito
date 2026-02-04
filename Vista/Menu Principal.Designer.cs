@@ -31,6 +31,7 @@
             btn_VistaCliente = new Button();
             btn_VistaProducto = new Button();
             btn_VistaReportesConsultas = new Button();
+            btn_Venta = new Button();
             SuspendLayout();
             // 
             // btn_VistaCliente
@@ -63,11 +64,22 @@
             btn_VistaReportesConsultas.UseVisualStyleBackColor = true;
             btn_VistaReportesConsultas.Click += btn_VistaReportesConsultas_Click;
             // 
+            // btn_Venta
+            // 
+            btn_Venta.Location = new Point(575, 222);
+            btn_Venta.Name = "btn_Venta";
+            btn_Venta.Size = new Size(135, 41);
+            btn_Venta.TabIndex = 4;
+            btn_Venta.Text = "Ventas";
+            btn_Venta.UseVisualStyleBackColor = true;
+            btn_Venta.Click += btn_Venta_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btn_Venta);
             Controls.Add(btn_VistaReportesConsultas);
             Controls.Add(btn_VistaProducto);
             Controls.Add(btn_VistaCliente);
@@ -82,5 +94,6 @@
         private Button btn_VistaCliente;
         private Button btn_VistaProducto;
         private Button btn_VistaReportesConsultas;
+        private Button btn_Venta;
     }
 }

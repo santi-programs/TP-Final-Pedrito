@@ -63,9 +63,9 @@ namespace Vista
         private void btn_Descuento_Click(object sender, EventArgs e)
         {
             int id = int.Parse(txt_ID.Text);
-            decimal precioBase = decimal.Parse(txt_precio.Text);
+            double precioBase = double.Parse(txt_precio.Text);
 
-            decimal precioFinal = controlador.Descuento(id, precioBase);
+            double precioFinal = controlador.Descuento(id, precioBase);
 
             MessageBox.Show(precioFinal.ToString("0.00"));
         }

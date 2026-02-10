@@ -24,14 +24,14 @@ namespace Modelo
         {
             using (var context = new Context())
             {
-                return context.Vendedores.ToList();
+                return context.Vendedor.ToList();
             }
         }
         public void ObtenerVendedorPorID(int id)
         {
             using (var context = new Context())
             {
-                var vendedor = context.Vendedores.Find(id);
+                var vendedor = context.Vendedor.Find(id);
             }
         }
 
@@ -39,7 +39,7 @@ namespace Modelo
         {
             using (var context = new Context())
             {
-                context.Vendedores.Add(v);
+                context.Vendedor.Add(v);
                 context.SaveChanges();
             }
         }
@@ -47,11 +47,11 @@ namespace Modelo
         {
             using (var context = new Context())
             {
-                var vendedor = context.Vendedores.Find(idVendedor);
-                var sucursal = context.Sucursales.Find(idSucursal);
+                var vendedor = context.Vendedor.Find(idVendedor);
+                var sucursal = context.Sucursal.Find(idSucursal);
                 if (vendedor != null && sucursal != null)
                 {
-                    vendedor.IDSucursal = idSucursal;
+                    vendedor.SucursalID = idSucursal;
                     context.SaveChanges();
                     return true;
                 }
@@ -62,10 +62,10 @@ namespace Modelo
         {
             using (var context = new Context())
             {
-                var vendedor = context.Vendedores.Find(idVendedor);
+                var vendedor = context.Vendedor.Find(idVendedor);
                 if (vendedor != null)
                 {
-                    context.Vendedores.Remove(vendedor);
+                    context.Vendedor.Remove(vendedor);
                     context.SaveChanges();
                 }
             }

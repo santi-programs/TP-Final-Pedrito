@@ -9,14 +9,15 @@ namespace Entidades
 {
     public class Sucursal
     {
-        public int IDSucursal { get; set; }
+        public int SucursalID { get; set; }
         public string Direccion { get; set; }
         public double Precio { get; set; }
         public int Stock { get; set; }
         
+        public Sucursal() { }
         public Sucursal(int idSucursal, string direccion, double precio, int stock)
         {
-            IDSucursal = idSucursal;
+            SucursalID = idSucursal;
             Direccion = direccion;
             Precio = precio;
             Stock = stock;

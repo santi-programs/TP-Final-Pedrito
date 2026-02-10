@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            btn_Factura = new Button();
             label10 = new Label();
-            btn_Descuento = new Button();
             dtp_Fecha = new DateTimePicker();
             cbo_MetodoPago = new ComboBox();
             btn_Cerrar = new Button();
             panel2 = new Panel();
+            btn_Factura = new Button();
             btn_Eliminar = new Button();
             btn_Modificar = new Button();
+            btn_Descuento = new Button();
             label7 = new Label();
             txt_ID = new TextBox();
             txt_Cantidad = new TextBox();
@@ -76,19 +76,6 @@
             panel1.TabIndex = 5;
             panel1.Paint += panel1_Paint;
             // 
-            // btn_Factura
-            // 
-            btn_Factura.BackColor = Color.FromArgb(0, 0, 20);
-            btn_Factura.Font = new Font("Lucida Bright", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_Factura.ForeColor = SystemColors.ButtonHighlight;
-            btn_Factura.Location = new Point(401, 89);
-            btn_Factura.Name = "btn_Factura";
-            btn_Factura.Size = new Size(161, 59);
-            btn_Factura.TabIndex = 19;
-            btn_Factura.Text = "Crear Factura";
-            btn_Factura.UseVisualStyleBackColor = false;
-            btn_Factura.Click += btn_Factura_Click;
-            // 
             // label10
             // 
             label10.AccessibleRole = AccessibleRole.Cursor;
@@ -100,19 +87,6 @@
             label10.Size = new Size(97, 20);
             label10.TabIndex = 18;
             label10.Text = "Cantidad";
-            // 
-            // btn_Descuento
-            // 
-            btn_Descuento.BackColor = Color.FromArgb(0, 0, 20);
-            btn_Descuento.Font = new Font("Lucida Bright", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_Descuento.ForeColor = SystemColors.ButtonHighlight;
-            btn_Descuento.Location = new Point(401, 15);
-            btn_Descuento.Name = "btn_Descuento";
-            btn_Descuento.Size = new Size(161, 59);
-            btn_Descuento.TabIndex = 11;
-            btn_Descuento.Text = "Descuento";
-            btn_Descuento.UseVisualStyleBackColor = false;
-            btn_Descuento.Click += btn_Descuento_Click;
             // 
             // dtp_Fecha
             // 
@@ -155,6 +129,19 @@
             panel2.Size = new Size(579, 160);
             panel2.TabIndex = 13;
             // 
+            // btn_Factura
+            // 
+            btn_Factura.BackColor = Color.FromArgb(0, 0, 20);
+            btn_Factura.Font = new Font("Lucida Bright", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_Factura.ForeColor = SystemColors.ButtonHighlight;
+            btn_Factura.Location = new Point(401, 89);
+            btn_Factura.Name = "btn_Factura";
+            btn_Factura.Size = new Size(161, 59);
+            btn_Factura.TabIndex = 19;
+            btn_Factura.Text = "Crear Factura";
+            btn_Factura.UseVisualStyleBackColor = false;
+            btn_Factura.Click += btn_Factura_Click;
+            // 
             // btn_Eliminar
             // 
             btn_Eliminar.BackColor = Color.FromArgb(0, 0, 20);
@@ -180,6 +167,19 @@
             btn_Modificar.Text = "Modificar";
             btn_Modificar.UseVisualStyleBackColor = false;
             btn_Modificar.Click += btn_Modificar_Click;
+            // 
+            // btn_Descuento
+            // 
+            btn_Descuento.BackColor = Color.FromArgb(0, 0, 20);
+            btn_Descuento.Font = new Font("Lucida Bright", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_Descuento.ForeColor = SystemColors.ButtonHighlight;
+            btn_Descuento.Location = new Point(401, 15);
+            btn_Descuento.Name = "btn_Descuento";
+            btn_Descuento.Size = new Size(161, 59);
+            btn_Descuento.TabIndex = 11;
+            btn_Descuento.Text = "Descuento";
+            btn_Descuento.UseVisualStyleBackColor = false;
+            btn_Descuento.Click += btn_Descuento_Click;
             // 
             // label7
             // 

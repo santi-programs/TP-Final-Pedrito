@@ -38,10 +38,10 @@ namespace Modelo
 
         public object ObtenerVentasPorVendedor(List<ReporteConsulta> datos)
         {
-            var reporte = datos.GroupBy(d => d.IDVendedor)
+            var reporte = datos.GroupBy(d => d.VendedorID)
                 .Select(g => new
                 {
-                    IDVendedor = g.Key,
+                    VendedorID = g.Key,
                     TotalVentas = g.Sum(x => x.Monto),
                     CantidadOperaciones = g.Count()
                 })
@@ -85,7 +85,7 @@ namespace Modelo
         {
             using (var db = new Context())
             {
-                var cliente = db.Clientes.Find(idBuscado);
+                var cliente = db.Cliente.Find(idBuscado);
                 if (cliente == null) return "No existe";
 
                 if (cliente.MinoristaMayorista)

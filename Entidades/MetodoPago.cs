@@ -8,18 +8,22 @@ namespace Entidades
 {
     public class MetodoPago
     {
+        public int MetodoPagoID { get; set; }
         public string Tipo { get; set; }
         public double Monto { get; set; }
         public string Detalles { get; set; }
-        public int IdMetodo { get; set; }
+        
 
-
-        public MetodoPago(string tipo, double monto, string detalles, int idMetodo)
+        public MetodoPago()
         {
+        }
+        public MetodoPago(int idMetodo, string tipo, double monto, string detalles)
+        {
+            MetodoPagoID = idMetodo;
             Tipo = tipo;
             Monto = monto;
             Detalles = detalles;
-            IdMetodo = idMetodo;
+            
 
         }
     }

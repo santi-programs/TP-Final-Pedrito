@@ -20,7 +20,7 @@ namespace Modelo
         {
             using (var context = new Context())
             {
-                return context.Clientes.ToList();
+                return context.Cliente.ToList();
             }
         }
 
@@ -28,14 +28,14 @@ namespace Modelo
         {
             using (var context = new Context())
             {
-                var cliente = context.Clientes.Find(id);
+                var cliente = context.Cliente.Find(id);
             }
         }
         public void AgregarCliente(Cliente c)
         {
             using (var context = new Context())
             {
-                context.Clientes.Add(c);
+                context.Cliente.Add(c);
                 context.SaveChanges();
             }
         }
@@ -44,7 +44,7 @@ namespace Modelo
         {
             using (var context = new Context())
             {
-                context.Clientes.Update(c);
+                context.Cliente.Update(c);
                 context.SaveChanges();
             }
         }
@@ -53,10 +53,10 @@ namespace Modelo
         {
             using (var context = new Context())
             { 
-                var cliente = context.Clientes.Find(id);
+                var cliente = context.Cliente.Find(id);
                 if (cliente != null)
                 {
-                    context.Clientes.Remove(cliente);
+                    context.Cliente.Remove(cliente);
                     context.SaveChanges();
                 }
             }
@@ -71,7 +71,7 @@ namespace Modelo
         {
             using (var db = new Context())
             {
-                var cliente = db.Clientes.Find(idcliente);
+                var cliente = db.Cliente.Find(idcliente);
                 if (cliente == null) return precioBase;
 
                 double porcentajeAplicado = cliente.MinoristaMayorista ? descuentoMayorista : descuentoMinorista;
@@ -84,9 +84,9 @@ namespace Modelo
         {
             using (var context = new Context())
             {
-                var cliente = context.Clientes
+                var cliente = context.Cliente
                     .Include(c => c.ventas)
-                    .FirstOrDefault(c => c.IDCliente == idCliente);
+                    .FirstOrDefault(c => c.ClienteID == idCliente);
 
                 if (cliente == null) return "Cliente no encontrado";
 
@@ -98,7 +98,7 @@ namespace Modelo
                     Tipo = cliente.MinoristaMayorista ? "Mayorista" : "Minorista",
                     Compras = cliente.ventas.Select(v => new
                     {
-                        v.IdVenta,
+                        v.VentaID,
                         v.Monto,
                         MontoConDescuento = v.Monto * (1 - descuento)
                     }).ToList()

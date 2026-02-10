@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Entidades;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Entidades;
 
 namespace Modelo
 {
@@ -26,7 +27,7 @@ namespace Modelo
         {
             using (var context = new Context())
             {
-                return context.Ventas.ToList();
+                return context.Venta.ToList();
             }
         }   
 
@@ -34,14 +35,14 @@ namespace Modelo
         {
             using (var context = new Context())
             {
-                var venta = context.Ventas.Find(id);
+                var venta = context.Venta.Find(id);
             }
         }
         public void AgregarVenta(Venta v)
         {
             using (var context = new Context())
             {
-                context.Ventas.Add(v);
+                context.Venta.Add(v); // problema
                 context.SaveChanges();
             }
         }
@@ -49,7 +50,7 @@ namespace Modelo
         {
             using (var context = new Context())
             {
-                context.Ventas.Update(v);
+                context.Venta.Update(v);
                 context.SaveChanges();
             }
         }
@@ -57,10 +58,10 @@ namespace Modelo
         {
             using (var context = new Context())
             {
-                var venta = context.Ventas.Find(id);
+                var venta = context.Venta.Find(id);
                 if (venta != null)
                 {
-                    context.Ventas.Remove(venta);
+                    context.Venta.Remove(venta);
                     context.SaveChanges();
                 }
             }
@@ -70,11 +71,11 @@ namespace Modelo
         {
             using (var context = new Context())
             {
-                var ventaInfo = context.Ventas
-                    .Where(v => v.IdVenta == idventa)
+                var ventaInfo = context.Venta
+                    .Where(v => v.VentaID == idventa)
                     .Select(v => new
                     {
-                        v.IdVenta,
+                        v.VentaID,
                         PrecioOriginal = v.Monto,
                         DescuentoAplicado = v.ClienteRelacion.MinoristaMayorista ? v.Monto * 0.80 : v.Monto,
                         EsMayorista = v.ClienteRelacion.MinoristaMayorista
@@ -89,8 +90,8 @@ namespace Modelo
 
             using (var context = new Context())
             {
-                var venta = context.Ventas.Find(idventa);
-                var producto = context.Productos.Find(idproducto);
+                var venta = context.Venta.Find(idventa);
+                var producto = context.Producto.Find(idproducto);
 
 
                 int StockActualizado = producto.Stock - venta.Cantidad;
@@ -104,8 +105,8 @@ namespace Modelo
 
             using (var context = new Context())
             {
-                var cliente = context.Clientes.Find(idCliente);
-                var venta = context.Ventas.Find(idventa);
+                var cliente = context.Cliente.Find(idCliente);
+                var venta = context.Venta.Find(idventa);
                 if (cliente == null) return "Cliente no encontrado";
 
                 double DescuentoAplicado = venta.ClienteRelacion.MinoristaMayorista ? venta.Monto * 0.80 : venta.Monto;
@@ -127,25 +128,34 @@ namespace Modelo
 
             using (var context = new Context())
             {
-                MetodoPago pago = new MetodoPago(tipo, monto, detalles, 0);
-                context.MetodosDePago.Add(pago);
+                MetodoPago pago = new MetodoPago(0,tipo, monto, detalles);
+                context.MetodosPago.Add(pago);
                 int filasAfectadas = context.SaveChanges();
                 return filasAfectadas > 0;
             }
         }
 
-        public void CrearFactura(int idVenta)
+        public string CrearFactura(int idVenta)
         {
             using (var context = new Context())
             {
-                var venta = context.Ventas.Find(idVenta);
-                if (venta == null) MessageBox.Show("Venta no encontrada");
-                string factura = $"Factura de Venta\n" +
-                                 $"ID Venta: {venta.IdVenta}\n" +
-                                 $"Cliente: {venta.ClienteRelacion.Nombre} {venta.ClienteRelacion.Apellido}\n" +
-                                 $"Monto: {venta.Monto}\n" +
-                                 $"Fecha: {venta.Fecha}\n";
-                MessageBox.Show(factura);
+                // Importante: .Include para traer los datos del cliente
+                var venta = context.Venta
+                    .Include(v => v.ClienteRelacion)
+                    .FirstOrDefault(v => v.VentaID == idVenta);
+
+                if (venta == null) return "Venta no encontrada";
+
+                return "==========================================\n" +
+                       "           FACTURA DE VENTA               \n" +
+                       "==========================================\n" +
+                       $"ID Venta: {venta.VentaID}\n" +
+                       $"Fecha:    {venta.Fecha:dd/MM/yyyy}\n" +
+                       "------------------------------------------\n" +
+                       $"Cliente:  {venta.ClienteRelacion.Nombre} {venta.ClienteRelacion.Apellido}\n" +
+                       $"Monto:    ${venta.Monto:N2}\n" +
+                       "==========================================\n" +
+                       "        ¡Gracias por su compra!           ";
             }
         } 
 

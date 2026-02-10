@@ -8,8 +8,8 @@ namespace Entidades
 {
     public class Venta
     {
-        public int IdVenta { get; set; }
-        public int IDProducto { get; set; }
+        public int VentaID { get; set; }
+        public int ProductoID { get; set; }
         public string metodoPago { get; set; }
         public double Monto { get; set; }
         public DateTime Fecha { get; set; }
@@ -22,8 +22,8 @@ namespace Entidades
 
         public Venta(int idVenta, int idProducto, string Mpago, double monto, int cantidad)
         {
-            IdVenta = idVenta;
-            IDProducto = idProducto;
+            VentaID = idVenta;
+            ProductoID = idProducto;
             metodoPago = Mpago;
             Monto = monto;
             Cantidad = cantidad;

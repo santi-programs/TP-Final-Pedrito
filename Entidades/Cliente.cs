@@ -6,7 +6,7 @@ namespace Entidades
 {
     public class Cliente
     {
-        public int IDCliente { get; set; }
+        public int ClienteID { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string DNI { get; set; }
@@ -17,8 +17,8 @@ namespace Entidades
         public Cliente() { }
 
         public Cliente(int idCliente, string nombre, string apellido,string dni, bool minoristaMayorista, string telefono ) 
-        { 
-           IDCliente = idCliente;
+        {
+            ClienteID = idCliente;
            Nombre = nombre;
            Apellido = apellido;
            DNI = dni;

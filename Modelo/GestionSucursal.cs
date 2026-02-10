@@ -23,7 +23,7 @@ namespace Modelo
         {
             using (var context = new Context())
             {
-                return context.Sucursales.ToList();
+                return context.Sucursal.ToList();
             }
         }
 
@@ -32,7 +32,7 @@ namespace Modelo
         {
             using (var context = new Context())
             {
-                var sucursal = context.Sucursales.Find(id);
+                var sucursal = context.Sucursal.Find(id);
             }
         }
 
@@ -40,7 +40,7 @@ namespace Modelo
         {
             using (var context = new Context())
             {
-                context.Sucursales.Add(s);
+                context.Sucursal.Add(s);
                 context.SaveChanges();
             }
         }
@@ -49,7 +49,7 @@ namespace Modelo
         {
             using(var context = new Context())
             {
-                context.Sucursales.Update(s);
+                context.Sucursal.Update(s);
                 context.SaveChanges();
             }
         }
@@ -58,10 +58,10 @@ namespace Modelo
         {
             using(var context = new Context())
             {
-                var sucursal = context.Sucursales.Find(id);
+                var sucursal = context.Sucursal.Find(id);
                 if (sucursal != null)
                 {
-                    context.Sucursales.Remove(sucursal);
+                    context.Sucursal.Remove(sucursal);
                     context.SaveChanges();
                 }
             }

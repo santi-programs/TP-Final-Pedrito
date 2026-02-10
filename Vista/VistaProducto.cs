@@ -41,7 +41,7 @@ namespace Vista
         {
             Producto p = new Producto()
             {
-                IDProducto = int.Parse(txt_ID.Text),
+                ProductoID = int.Parse(txt_ID.Text),
                 Nombre = txt_Nombre.Text,
                 Descripcion = txt_Descripcion.Text,
                 Precio = double.Parse(txt_Precio.Text),
@@ -69,7 +69,7 @@ namespace Vista
             StringBuilder sb = new StringBuilder();
             foreach (var producto in productos)
             {
-                sb.AppendLine($"ID: {producto.IDProducto}," +
+                sb.AppendLine($"ID: {producto.ProductoID}," +
                     $" Nombre: {producto.Nombre}," +
                     $" Precio: {producto.Precio}," +
                     $" Stock: {producto.Stock}," +

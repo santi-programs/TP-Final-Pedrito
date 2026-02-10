@@ -23,7 +23,7 @@ namespace Modelo
         {
             using (var context = new Context())
             {
-                return context.Categorias.ToList();
+                return context.Categoria.ToList();
             }
         }
 
@@ -31,14 +31,14 @@ namespace Modelo
         {
             using (var context = new Context())
             {
-                var categoria = context.Categorias.Find(id);
+                var categoria = context.Categoria.Find(id);
             }
         }
         public void AgregarCategoria(Categoria c)
         {
             using (var context = new Context())
             {
-                context.Categorias.Add(c);
+                context.Categoria.Add(c);
                 context.SaveChanges();
             }
         }
@@ -46,7 +46,7 @@ namespace Modelo
         {
             using (var db = new Context())
             {
-                var producto = db.Productos.Find(idProducto);
+                var producto = db.Producto.Find(idProducto);
                 if (producto != null)
                 {
                     producto.Categoria = idCategoria;

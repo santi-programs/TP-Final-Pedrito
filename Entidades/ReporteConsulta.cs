@@ -10,17 +10,21 @@ namespace Entidades
 {
     public class ReporteConsulta
     {
+        public int ReporteConsultaID { get; set; }
         public DateTime Fecha { get; set; }
         public string Producto { get; set; }
         public string Sucursal { get; set; }
-        public int IDVendedor { get; set; }
+        public int VendedorID { get; set; }
         public double Monto { get; set; }
+
+        public ReporteConsulta(){   }
         public ReporteConsulta(DateTime fecha, string producto, string sucursal, int idVendedor, int idSucursal, double monto)
         {
+            
             Fecha = fecha;
             Producto = producto;
             Sucursal = sucursal;
-            IDVendedor = idVendedor;
+            VendedorID = idVendedor;
             Monto = monto;
         }
     }

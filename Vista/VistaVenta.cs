@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Controlador;
 using Entidades;
 
+
 namespace Vista
 {
     public partial class VistaVenta : Form
@@ -47,16 +48,27 @@ namespace Vista
 
         private void btn_Factura_Click(object sender, EventArgs e)
         {
-            int id = int.Parse(txt_ID.Text);
-            controlador.Factura(id);
-            
+            // 1. Obtenemos el ID del producto o venta
+            int idVenta = int.Parse(txt_ID.Text);
+
+            // 2. Llamamos a tu lógica (la que ya tenés en el Modelo)
+            string contenido = controlador.Factura(idVenta);
+
+            // 3. Creamos e instanciamos el nuevo formulario pasándole el texto
+            VistaFactura pantallaFactura = new VistaFactura(contenido);
+
+            // 4. Lo mostramos como diálogo (bloquea la de atrás hasta que cierres esta)
+            pantallaFactura.ShowDialog();
+
         }
+            
+        
 
         private void btn_Modificar_Click(object sender, EventArgs e)
         {
             Venta v = new Venta
             {
-                IdVenta = int.Parse(txt_ID.Text),
+                VentaID = int.Parse(txt_ID.Text),
                 metodoPago = cbo_MetodoPago.Text,
                 Monto = Convert.ToDouble(txt_Monto.Text),
                 Cantidad = Convert.ToInt32(txt_Cantidad.Text),

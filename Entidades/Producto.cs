@@ -8,7 +8,7 @@ namespace Entidades
 {
     public class Producto
     {
-        public int IDProducto {  get; set; }
+        public int ProductoID {  get; set; }
         public string Nombre {  get; set; }
         public string Descripcion {  get; set; }
         public int Categoria {  get; set; }
@@ -21,7 +21,7 @@ namespace Entidades
 
         public Producto(int idProducto, string nombre, string descripcion, int categoria, double precio, int stock, string sucursal)
         {
-            IDProducto = idProducto;
+            ProductoID = idProducto;
             Nombre = nombre;
             Descripcion = descripcion;
             Categoria = categoria;

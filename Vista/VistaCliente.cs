@@ -1,6 +1,4 @@
-﻿using Controlador;
-using Entidades;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Controlador;
+using Entidades;
+using Modelo;
 
 namespace Vista
 {
@@ -16,10 +17,22 @@ namespace Vista
     {
         private ControladorCliente controlador;
 
+
+
         public VistaCliente()
         {
             InitializeComponent();
             controlador = new ControladorCliente();
+
+            using (var context = new Context())
+            {
+                bool conexion = context.Database.CanConnect(); // Devuelve true si conecta
+
+                if (conexion == true) { MessageBox.Show("Conecta"); } else { MessageBox.Show("no Conecta"); }
+                
+            }
+
+
         }
 
         private void btn_Agregar_Click(object sender, EventArgs e)
@@ -41,7 +54,7 @@ namespace Vista
         {
             Cliente c = new Cliente
             {
-                IDCliente = int.Parse(txt_ID.Text),
+                ClienteID = int.Parse(txt_ID.Text),
                 Nombre = txt_Nombre.Text,
                 Apellido = txt_Apellido.Text,
                 DNI = txt_DNI.Text,

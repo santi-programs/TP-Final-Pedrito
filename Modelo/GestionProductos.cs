@@ -25,14 +25,14 @@ namespace Modelo
         {
             using (var context = new Context())
             {
-                return context.Productos.ToList();
+                return context.Producto.ToList();
             }
         }
         public void ObtenerProductoPorID(int id)
         {
             using (var context = new Context())
             {
-                var producto = context.Productos.Find(id);
+                var producto = context.Producto.Find(id);
             }
         }
 
@@ -40,7 +40,7 @@ namespace Modelo
         {
             using (var context = new Context())
             {
-                context.Productos.Add(p);
+                context.Producto.Add(p);
                 context.SaveChanges();
             }
         }
@@ -48,7 +48,7 @@ namespace Modelo
         {
             using (var context = new Context())
             {
-                context.Productos.Update(p);
+                context.Producto.Update(p);
                 context.SaveChanges();
             }
         }
@@ -56,10 +56,10 @@ namespace Modelo
         {
             using (var context = new Context())
             {
-                var producto = context.Productos.Find(id);
+                var producto = context.Producto.Find(id);
                 if (producto != null)
                 {
-                    context.Productos.Remove(producto);
+                    context.Producto.Remove(producto);
                     context.SaveChanges();
                 }
             }
@@ -69,7 +69,7 @@ namespace Modelo
         {
             using (var context = new Context())
             {
-                return context.Productos
+                return context.Producto
                               .Where(p => p.Sucursal.Contains(sucursal))
                               .ToList();
             }

@@ -3,9 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 namespace Modelo
@@ -14,19 +16,16 @@ namespace Modelo
     public class Context : DbContext
     {
         
-        public DbSet<Cliente> Clientes { get; set; }
-        public DbSet<Producto> Productos { get; set; }
-        public DbSet<Vendedor> Vendedores { get; set; }
-        public DbSet<ReporteConsulta> Reportes { get; set; }
-        public DbSet<Sucursal> Sucursales { get; set; }
-        public DbSet<Venta> Ventas { get; set; }
-        public DbSet<Categoria> Categorias { get; set; }
-        public DbSet<MetodoPago> MetodosDePago { get; set; }
+        public DbSet<Cliente> Cliente { get; set; }
+        public DbSet<Producto> Producto { get; set; }
+        public DbSet<Vendedor> Vendedor { get; set; }
+        public DbSet<ReporteConsulta> ReporteConsulta { get; set; }
+        public DbSet<Sucursal> Sucursal { get; set; }
+        public DbSet<Venta> Venta { get; set; }
+        public DbSet<Categoria> Categoria { get; set; }
+        public DbSet<MetodoPago> MetodosPago { get; set; }
 
-        public string Cadena = "Data Source=(localdb)\\MSSQLLocalDB;" +
-                            "Initial Catalog=TechStoreVentasDB;" +
-                            "Integrated Security=True;" +
-                            "Trust Server Certificate=True;";
+        public const string Cadena = @"Data Source=ARSL\SQLEXPRESS;Initial Catalog=TechStoreVentasDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False";
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             options.UseSqlServer(Cadena,

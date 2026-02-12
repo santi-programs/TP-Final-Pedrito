@@ -111,7 +111,7 @@ namespace Modelo
 
                 double DescuentoAplicado = venta.ClienteRelacion.MinoristaMayorista ? venta.Monto * 0.80 : venta.Monto;
 
-                bool exito = ProcesarPago(TipoPago, DescuentoAplicado, $"Pago de cliente {cliente.Nombre}");
+                bool exito = ProcesarPago(id, monto, tipo, descuento);
 
 
                 return exito ? "Pago procesado con éxito" : "Error al procesar";
@@ -122,13 +122,14 @@ namespace Modelo
         }
 
 
-        public bool ProcesarPago(string tipo, double monto, string detalles)
+        public bool ProcesarPago(int id, double monto, string tipo, double descuento)
         {
+            Venta venta = new Venta { Monto = monto };
             if (monto <= 0) return false;
 
             using (var context = new Context())
             {
-                MetodoPago pago = new MetodoPago(0,tipo, monto, detalles);
+                MetodoPago pago = new MetodoPago(id, tipo, descuento );
                 context.MetodosPago.Add(pago);
                 int filasAfectadas = context.SaveChanges();
                 return filasAfectadas > 0;

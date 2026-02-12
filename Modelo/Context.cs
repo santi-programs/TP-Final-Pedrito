@@ -25,7 +25,8 @@ namespace Modelo
         public DbSet<Categoria> Categoria { get; set; }
         public DbSet<MetodoPago> MetodosPago { get; set; }
 
-        public const string Cadena = @"Data Source=ARSL\SQLEXPRESS;Initial Catalog=TechStoreVentasDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False";
+        //public const string Cadena = @"Data Source=ARSL\SQLEXPRESS;Initial Catalog=TechStoreVentasDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False";
+        public const string Cadena = @"Data Source=hp;Initial Catalog=FinalPedrito;Integrated Security=True;Encrypt=False";
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             options.UseSqlServer(Cadena,

@@ -23,6 +23,7 @@ namespace Controlador
 
         private readonly GestionProductos gestion = GestionProductos.ObtenerInstancia();
 
+        public List<Producto> Listar() => gestion.ListarProductos();
         public void Agregar(Producto p) => gestion.AgregarProducto(p);
         public void Modificar(Producto p) => gestion.ModificarProducto(p);
         public void Eliminar(int id) => gestion.EliminarProducto(id);

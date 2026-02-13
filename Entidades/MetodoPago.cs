@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Entidades
 {
@@ -10,21 +6,20 @@ namespace Entidades
     {
         public int MetodoPagoID { get; set; }
         public string Tipo { get; set; }
-        public double Monto { get; set; }
-        public string Detalles { get; set; }
-        
+        public double PorcentajeDescuento { get; set; } // 0.10 = 10%
+
+        // Nueva propiedad para mostrar ID - Tipo en el ComboBox
+        public string Display => $"{MetodoPagoID} - {Tipo}";
 
         public MetodoPago()
         {
         }
-        public MetodoPago(int idMetodo, string tipo, double monto, string detalles)
-        {
-            MetodoPagoID = idMetodo;
-            Tipo = tipo;
-            Monto = monto;
-            Detalles = detalles;
-            
 
+        public MetodoPago(int id, string tipo, double porcentajeDescuento)
+        {
+            MetodoPagoID = id;
+            Tipo = tipo;
+            PorcentajeDescuento = porcentajeDescuento;
         }
     }
 }

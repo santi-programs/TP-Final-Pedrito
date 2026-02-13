@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            label11 = new Label();
+            cbo_Producto = new ComboBox();
+            label8 = new Label();
             label10 = new Label();
             dtp_Fecha = new DateTimePicker();
             cbo_MetodoPago = new ComboBox();
@@ -50,6 +53,8 @@
             label1 = new Label();
             label2 = new Label();
             label9 = new Label();
+            cbo_Cliente = new ComboBox();
+            label12 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -57,6 +62,11 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(0, 0, 64);
+            panel1.Controls.Add(label12);
+            panel1.Controls.Add(cbo_Cliente);
+            panel1.Controls.Add(label11);
+            panel1.Controls.Add(cbo_Producto);
+            panel1.Controls.Add(label8);
             panel1.Controls.Add(label10);
             panel1.Controls.Add(dtp_Fecha);
             panel1.Controls.Add(cbo_MetodoPago);
@@ -70,11 +80,42 @@
             panel1.Controls.Add(txt_Monto);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(32, 81);
+            panel1.Location = new Point(32, 57);
             panel1.Name = "panel1";
-            panel1.Size = new Size(942, 432);
+            panel1.Size = new Size(942, 484);
             panel1.TabIndex = 5;
             panel1.Paint += panel1_Paint;
+            // 
+            // label11
+            // 
+            label11.AccessibleRole = AccessibleRole.Cursor;
+            label11.AutoSize = true;
+            label11.Font = new Font("SimSun", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label11.ForeColor = Color.White;
+            label11.Location = new Point(243, 122);
+            label11.Name = "label11";
+            label11.Size = new Size(64, 20);
+            label11.TabIndex = 22;
+            label11.Text = "Monto";
+            // 
+            // cbo_Producto
+            // 
+            cbo_Producto.Location = new Point(29, 33);
+            cbo_Producto.Name = "cbo_Producto";
+            cbo_Producto.Size = new Size(204, 28);
+            cbo_Producto.TabIndex = 0;
+            // 
+            // label8
+            // 
+            label8.AccessibleRole = AccessibleRole.Cursor;
+            label8.AutoSize = true;
+            label8.Font = new Font("SimSun", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.ForeColor = Color.White;
+            label8.Location = new Point(243, 33);
+            label8.Name = "label8";
+            label8.Size = new Size(97, 20);
+            label8.TabIndex = 20;
+            label8.Text = "Producto";
             // 
             // label10
             // 
@@ -82,7 +123,7 @@
             label10.AutoSize = true;
             label10.Font = new Font("SimSun", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label10.ForeColor = Color.White;
-            label10.Location = new Point(171, 182);
+            label10.Location = new Point(243, 72);
             label10.Name = "label10";
             label10.Size = new Size(97, 20);
             label10.TabIndex = 18;
@@ -90,17 +131,17 @@
             // 
             // dtp_Fecha
             // 
-            dtp_Fecha.Location = new Point(29, 128);
+            dtp_Fecha.Location = new Point(29, 205);
             dtp_Fecha.Name = "dtp_Fecha";
-            dtp_Fecha.Size = new Size(125, 27);
+            dtp_Fecha.Size = new Size(204, 27);
             dtp_Fecha.TabIndex = 16;
             // 
             // cbo_MetodoPago
             // 
             cbo_MetodoPago.FormattingEnabled = true;
-            cbo_MetodoPago.Location = new Point(29, 31);
+            cbo_MetodoPago.Location = new Point(29, 160);
             cbo_MetodoPago.Name = "cbo_MetodoPago";
-            cbo_MetodoPago.Size = new Size(125, 28);
+            cbo_MetodoPago.Size = new Size(204, 28);
             cbo_MetodoPago.TabIndex = 15;
             // 
             // btn_Cerrar
@@ -114,6 +155,7 @@
             btn_Cerrar.TabIndex = 14;
             btn_Cerrar.Text = "Cerrar";
             btn_Cerrar.UseVisualStyleBackColor = false;
+            btn_Cerrar.Click += btn_Cerrar_Click;
             // 
             // panel2
             // 
@@ -124,9 +166,9 @@
             panel2.Controls.Add(btn_Descuento);
             panel2.Controls.Add(label7);
             panel2.Controls.Add(txt_ID);
-            panel2.Location = new Point(29, 264);
+            panel2.Location = new Point(29, 295);
             panel2.Name = "panel2";
-            panel2.Size = new Size(579, 160);
+            panel2.Size = new Size(579, 159);
             panel2.TabIndex = 13;
             // 
             // btn_Factura
@@ -134,7 +176,7 @@
             btn_Factura.BackColor = Color.FromArgb(0, 0, 20);
             btn_Factura.Font = new Font("Lucida Bright", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_Factura.ForeColor = SystemColors.ButtonHighlight;
-            btn_Factura.Location = new Point(401, 89);
+            btn_Factura.Location = new Point(399, 91);
             btn_Factura.Name = "btn_Factura";
             btn_Factura.Size = new Size(161, 59);
             btn_Factura.TabIndex = 19;
@@ -147,7 +189,7 @@
             btn_Eliminar.BackColor = Color.FromArgb(0, 0, 20);
             btn_Eliminar.Font = new Font("Lucida Bright", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_Eliminar.ForeColor = SystemColors.ButtonHighlight;
-            btn_Eliminar.Location = new Point(21, 89);
+            btn_Eliminar.Location = new Point(19, 91);
             btn_Eliminar.Name = "btn_Eliminar";
             btn_Eliminar.Size = new Size(161, 59);
             btn_Eliminar.TabIndex = 16;
@@ -160,7 +202,7 @@
             btn_Modificar.BackColor = Color.FromArgb(0, 0, 20);
             btn_Modificar.Font = new Font("Lucida Bright", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_Modificar.ForeColor = SystemColors.ButtonHighlight;
-            btn_Modificar.Location = new Point(21, 15);
+            btn_Modificar.Location = new Point(19, 17);
             btn_Modificar.Name = "btn_Modificar";
             btn_Modificar.Size = new Size(161, 59);
             btn_Modificar.TabIndex = 13;
@@ -173,7 +215,7 @@
             btn_Descuento.BackColor = Color.FromArgb(0, 0, 20);
             btn_Descuento.Font = new Font("Lucida Bright", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_Descuento.ForeColor = SystemColors.ButtonHighlight;
-            btn_Descuento.Location = new Point(401, 15);
+            btn_Descuento.Location = new Point(399, 17);
             btn_Descuento.Name = "btn_Descuento";
             btn_Descuento.Size = new Size(161, 59);
             btn_Descuento.TabIndex = 11;
@@ -188,7 +230,7 @@
             label7.BackColor = Color.FromArgb(0, 0, 20);
             label7.Font = new Font("SimSun", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.White;
-            label7.Location = new Point(346, 68);
+            label7.Location = new Point(344, 70);
             label7.Name = "label7";
             label7.Size = new Size(31, 20);
             label7.TabIndex = 15;
@@ -196,16 +238,16 @@
             // 
             // txt_ID
             // 
-            txt_ID.Location = new Point(206, 66);
+            txt_ID.Location = new Point(203, 70);
             txt_ID.Name = "txt_ID";
             txt_ID.Size = new Size(125, 27);
             txt_ID.TabIndex = 14;
             // 
             // txt_Cantidad
             // 
-            txt_Cantidad.Location = new Point(29, 182);
+            txt_Cantidad.Location = new Point(29, 72);
             txt_Cantidad.Name = "txt_Cantidad";
-            txt_Cantidad.Size = new Size(125, 27);
+            txt_Cantidad.Size = new Size(204, 27);
             txt_Cantidad.TabIndex = 4;
             // 
             // label6
@@ -241,7 +283,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("SimSun", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(171, 135);
+            label4.Location = new Point(243, 212);
             label4.Name = "label4";
             label4.Size = new Size(64, 20);
             label4.TabIndex = 5;
@@ -249,22 +291,17 @@
             // 
             // txt_Monto
             // 
-            txt_Monto.Location = new Point(29, 77);
+            txt_Monto.Location = new Point(29, 115);
             txt_Monto.Name = "txt_Monto";
-            txt_Monto.Size = new Size(125, 27);
+            txt_Monto.Size = new Size(204, 27);
             txt_Monto.TabIndex = 4;
             // 
             // label3
             // 
-            label3.AccessibleRole = AccessibleRole.Cursor;
-            label3.AutoSize = true;
-            label3.Font = new Font("SimSun", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(169, 79);
+            label3.Location = new Point(0, 0);
             label3.Name = "label3";
-            label3.Size = new Size(64, 20);
-            label3.TabIndex = 5;
-            label3.Text = "Monto";
+            label3.Size = new Size(100, 23);
+            label3.TabIndex = 21;
             // 
             // label1
             // 
@@ -272,7 +309,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("SimSun", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(169, 33);
+            label1.Location = new Point(243, 160);
             label1.Name = "label1";
             label1.Size = new Size(163, 20);
             label1.TabIndex = 1;
@@ -292,11 +329,30 @@
             label9.BackColor = Color.SteelBlue;
             label9.Font = new Font("MS UI Gothic", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label9.ForeColor = Color.Black;
-            label9.Location = new Point(357, 26);
+            label9.Location = new Point(358, 9);
             label9.Name = "label9";
             label9.Size = new Size(251, 28);
             label9.TabIndex = 7;
             label9.Text = "Gestión De Ventas";
+            // 
+            // cbo_Cliente
+            // 
+            cbo_Cliente.Location = new Point(29, 248);
+            cbo_Cliente.Name = "cbo_Cliente";
+            cbo_Cliente.Size = new Size(204, 28);
+            cbo_Cliente.TabIndex = 23;
+            // 
+            // label12
+            // 
+            label12.AccessibleRole = AccessibleRole.Cursor;
+            label12.AutoSize = true;
+            label12.Font = new Font("SimSun", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label12.ForeColor = Color.White;
+            label12.Location = new Point(243, 250);
+            label12.Name = "label12";
+            label12.Size = new Size(86, 20);
+            label12.TabIndex = 24;
+            label12.Text = "Cliente";
             // 
             // VistaVenta
             // 
@@ -309,6 +365,7 @@
             Controls.Add(label2);
             Name = "VistaVenta";
             Text = "VistaVenta";
+            Load += VistaVenta_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
@@ -341,5 +398,10 @@
         private DateTimePicker dtp_Fecha;
         private ComboBox cbo_MetodoPago;
         private Label label10;
+        private Label label8;
+        private ComboBox cbo_Producto;
+        private Label label11;
+        private Label label12;
+        private ComboBox cbo_Cliente;
     }
 }

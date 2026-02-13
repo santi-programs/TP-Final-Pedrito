@@ -25,9 +25,9 @@ namespace Vista
 
         private void VistaReportesConsultas_Load(object sender, EventArgs e)
         {
-            cbo_Sucursal.DataSource = listaSucursales;
-            cbo_Sucursal.DisplayMember = "Direccion";
-            cbo_Sucursal.ValueMember = "IDSucursal";
+           // cbo_Sucursal.DataSource = listaSucursales;
+            //cbo_Sucursal.DisplayMember = "Direccion";
+            //cbo_Sucursal.ValueMember = "IDSucursal";
 
         }
 

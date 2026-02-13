@@ -40,20 +40,45 @@ namespace Modelo
         }
         public void AgregarVenta(Venta v)
         {
-            using (var context = new Context())
+            try
             {
-                context.Venta.Add(v); // problema
-                context.SaveChanges();
+                using (var context = new Context())
+                {
+                    context.Venta.Add(v); // problema
+                    context.SaveChanges();
+                }
+            }
+            catch (DbUpdateException ex)
+            {
+                // Manejo de errores
+                throw new Exception("Error al guardar la venta: " + ex.InnerException?.Message, ex);
             }
         }
-        public void ModificarVenta(Venta v)
-        {
-            using (var context = new Context())
-            {
-                context.Venta.Update(v);
-                context.SaveChanges();
-            }
-        }
+       
+           public void ModificarVenta(Venta v)
+           {
+                using (var context = new Context())
+                {
+                    // ⭐ Verificar que el producto y cliente existan
+                    var productoExiste = context.Producto.Any(p => p.ProductoID == v.ProductoID);
+                    var clienteExiste = context.Cliente.Any(c => c.ClienteID == v.ClienteID);
+
+                    if (!productoExiste)
+                    {
+                         throw new Exception("El producto seleccionado no existe");
+                    }
+
+                   if (!clienteExiste)
+                   {
+                        throw new Exception("El cliente seleccionado no existe");
+                   }
+
+                     // Actualizar
+                    context.Venta.Update(v);
+                    context.SaveChanges();
+                }
+           }
+        
         public void EliminarVenta(int id)
         {
             using (var context = new Context())
@@ -99,41 +124,7 @@ namespace Modelo
             }
 
         }
-
-        public string ValidarPago(int idCliente, double montoAPagar, string TipoPago, int idventa)
-        {
-
-            using (var context = new Context())
-            {
-                var cliente = context.Cliente.Find(idCliente);
-                var venta = context.Venta.Find(idventa);
-                if (cliente == null) return "Cliente no encontrado";
-
-                double DescuentoAplicado = venta.ClienteRelacion.MinoristaMayorista ? venta.Monto * 0.80 : venta.Monto;
-
-                bool exito = ProcesarPago(TipoPago, DescuentoAplicado, $"Pago de cliente {cliente.Nombre}");
-
-
-                return exito ? "Pago procesado con éxito" : "Error al procesar";
-
-
-            }
-
-        }
-
-
-        public bool ProcesarPago(string tipo, double monto, string detalles)
-        {
-            if (monto <= 0) return false;
-
-            using (var context = new Context())
-            {
-                MetodoPago pago = new MetodoPago(0,tipo, monto, detalles);
-                context.MetodosPago.Add(pago);
-                int filasAfectadas = context.SaveChanges();
-                return filasAfectadas > 0;
-            }
-        }
+ 
 
         public string CrearFactura(int idVenta)
         {

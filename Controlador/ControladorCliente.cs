@@ -17,6 +17,7 @@ namespace Controlador
 
         private readonly GestionClientes gestion = GestionClientes.ObtenerInstancia();
 
+        public List<Cliente> Listar() => gestion.ListarCliente();
         public void Agregar(Cliente c) => gestion.AgregarCliente(c);
         public void Modificar(Cliente c) => gestion.ModificarCliente(c);
         public void Eliminar(int id) => gestion.EliminarCliente(id);

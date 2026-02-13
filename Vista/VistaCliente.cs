@@ -24,13 +24,7 @@ namespace Vista
             InitializeComponent();
             controlador = new ControladorCliente();
 
-            using (var context = new Context())
-            {
-                bool conexion = context.Database.CanConnect(); // Devuelve true si conecta
 
-                if (conexion == true) { MessageBox.Show("Conecta"); } else { MessageBox.Show("no Conecta"); }
-                
-            }
 
 
         }

@@ -1,6 +1,6 @@
 ﻿namespace Vista
 {
-    partial class VistaCategoria
+    partial class VistaVendedor
     {
         /// <summary>
         /// Required designer variable.
@@ -28,45 +28,85 @@
         /// </summary>
         private void InitializeComponent()
         {
+            label2 = new Label();
             panel1 = new Panel();
+            txt_Apellido = new TextBox();
+            txt_Nombre = new TextBox();
+            label3 = new Label();
             btn_Cerrar = new Button();
             panel2 = new Panel();
+            btn_Despedir = new Button();
+            txt_IdVendedor = new TextBox();
+            txt_IdSucursal = new TextBox();
             label8 = new Label();
-            txt_IDCategoria = new TextBox();
             btn_Asignar = new Button();
             label7 = new Label();
-            txt_IDProducto = new TextBox();
             btn_Agregar = new Button();
-            label5 = new Label();
-            txt_Nombre = new TextBox();
             label1 = new Label();
-            label2 = new Label();
-            btn_Mostrar = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
             // 
+            // label2
+            // 
+            label2.AccessibleRole = AccessibleRole.Cursor;
+            label2.AutoSize = true;
+            label2.BackColor = Color.SteelBlue;
+            label2.Font = new Font("MS UI Gothic", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.Black;
+            label2.Location = new Point(254, 21);
+            label2.Name = "label2";
+            label2.Size = new Size(312, 28);
+            label2.TabIndex = 7;
+            label2.Text = "Gestión De Vendedores";
+            // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(0, 0, 64);
-            panel1.Controls.Add(btn_Mostrar);
+            panel1.Controls.Add(txt_Apellido);
+            panel1.Controls.Add(txt_Nombre);
+            panel1.Controls.Add(label3);
             panel1.Controls.Add(btn_Cerrar);
             panel1.Controls.Add(panel2);
             panel1.Controls.Add(btn_Agregar);
-            panel1.Controls.Add(label5);
-            panel1.Controls.Add(txt_Nombre);
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(32, 63);
+            panel1.Location = new Point(28, 62);
             panel1.Name = "panel1";
-            panel1.Size = new Size(637, 373);
-            panel1.TabIndex = 4;
+            panel1.Size = new Size(770, 373);
+            panel1.TabIndex = 6;
+            // 
+            // txt_Apellido
+            // 
+            txt_Apellido.Location = new Point(31, 79);
+            txt_Apellido.Name = "txt_Apellido";
+            txt_Apellido.Size = new Size(125, 27);
+            txt_Apellido.TabIndex = 17;
+            // 
+            // txt_Nombre
+            // 
+            txt_Nombre.Location = new Point(31, 33);
+            txt_Nombre.Name = "txt_Nombre";
+            txt_Nombre.Size = new Size(125, 27);
+            txt_Nombre.TabIndex = 16;
+            // 
+            // label3
+            // 
+            label3.AccessibleRole = AccessibleRole.Cursor;
+            label3.AutoSize = true;
+            label3.Font = new Font("SimSun", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(169, 79);
+            label3.Name = "label3";
+            label3.Size = new Size(97, 20);
+            label3.TabIndex = 15;
+            label3.Text = "Apellido";
             // 
             // btn_Cerrar
             // 
             btn_Cerrar.BackColor = Color.FromArgb(0, 0, 20);
             btn_Cerrar.Font = new Font("Lucida Bright", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_Cerrar.ForeColor = SystemColors.ButtonHighlight;
-            btn_Cerrar.Location = new Point(444, 14);
+            btn_Cerrar.Location = new Point(582, 16);
             btn_Cerrar.Name = "btn_Cerrar";
             btn_Cerrar.Size = new Size(161, 59);
             btn_Cerrar.TabIndex = 14;
@@ -77,15 +117,43 @@
             // panel2
             // 
             panel2.BackColor = Color.PowderBlue;
+            panel2.Controls.Add(btn_Despedir);
+            panel2.Controls.Add(txt_IdVendedor);
+            panel2.Controls.Add(txt_IdSucursal);
             panel2.Controls.Add(label8);
-            panel2.Controls.Add(txt_IDCategoria);
             panel2.Controls.Add(btn_Asignar);
             panel2.Controls.Add(label7);
-            panel2.Controls.Add(txt_IDProducto);
-            panel2.Location = new Point(29, 195);
+            panel2.Location = new Point(31, 194);
             panel2.Name = "panel2";
-            panel2.Size = new Size(552, 160);
+            panel2.Size = new Size(712, 160);
             panel2.TabIndex = 13;
+            // 
+            // btn_Despedir
+            // 
+            btn_Despedir.BackColor = Color.FromArgb(0, 0, 20);
+            btn_Despedir.Font = new Font("Lucida Bright", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_Despedir.ForeColor = SystemColors.ButtonHighlight;
+            btn_Despedir.Location = new Point(530, 55);
+            btn_Despedir.Name = "btn_Despedir";
+            btn_Despedir.Size = new Size(161, 59);
+            btn_Despedir.TabIndex = 20;
+            btn_Despedir.Text = "Despedir";
+            btn_Despedir.UseVisualStyleBackColor = false;
+            btn_Despedir.Click += btn_Despedir_Click;
+            // 
+            // txt_IdVendedor
+            // 
+            txt_IdVendedor.Location = new Point(206, 101);
+            txt_IdVendedor.Name = "txt_IdVendedor";
+            txt_IdVendedor.Size = new Size(125, 27);
+            txt_IdVendedor.TabIndex = 19;
+            // 
+            // txt_IdSucursal
+            // 
+            txt_IdSucursal.Location = new Point(206, 42);
+            txt_IdSucursal.Name = "txt_IdSucursal";
+            txt_IdSucursal.Size = new Size(125, 27);
+            txt_IdSucursal.TabIndex = 18;
             // 
             // label8
             // 
@@ -94,29 +162,22 @@
             label8.BackColor = Color.FromArgb(0, 0, 20);
             label8.Font = new Font("SimSun", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.White;
-            label8.Location = new Point(363, 49);
+            label8.Location = new Point(366, 42);
             label8.Name = "label8";
-            label8.Size = new Size(141, 20);
+            label8.Size = new Size(130, 20);
             label8.TabIndex = 17;
-            label8.Text = "ID Categoría";
-            // 
-            // txt_IDCategoria
-            // 
-            txt_IDCategoria.Location = new Point(223, 47);
-            txt_IDCategoria.Name = "txt_IDCategoria";
-            txt_IDCategoria.Size = new Size(125, 27);
-            txt_IDCategoria.TabIndex = 16;
+            label8.Text = "ID Sucursal";
             // 
             // btn_Asignar
             // 
             btn_Asignar.BackColor = Color.FromArgb(0, 0, 20);
             btn_Asignar.Font = new Font("Lucida Bright", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_Asignar.ForeColor = SystemColors.ButtonHighlight;
-            btn_Asignar.Location = new Point(21, 59);
+            btn_Asignar.Location = new Point(16, 55);
             btn_Asignar.Name = "btn_Asignar";
             btn_Asignar.Size = new Size(161, 59);
             btn_Asignar.TabIndex = 13;
-            btn_Asignar.Text = "Asignar";
+            btn_Asignar.Text = "Asignar A Sucursal";
             btn_Asignar.UseVisualStyleBackColor = false;
             btn_Asignar.Click += btn_Asignar_Click;
             // 
@@ -127,45 +188,24 @@
             label7.BackColor = Color.FromArgb(0, 0, 20);
             label7.Font = new Font("SimSun", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.White;
-            label7.Location = new Point(363, 108);
+            label7.Location = new Point(366, 101);
             label7.Name = "label7";
             label7.Size = new Size(130, 20);
             label7.TabIndex = 15;
-            label7.Text = "ID Producto";
-            // 
-            // txt_IDProducto
-            // 
-            txt_IDProducto.Location = new Point(223, 106);
-            txt_IDProducto.Name = "txt_IDProducto";
-            txt_IDProducto.Size = new Size(125, 27);
-            txt_IDProducto.TabIndex = 14;
+            label7.Text = "ID Vendedor";
             // 
             // btn_Agregar
             // 
             btn_Agregar.BackColor = Color.FromArgb(0, 0, 20);
             btn_Agregar.Font = new Font("Lucida Bright", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_Agregar.ForeColor = SystemColors.ButtonHighlight;
-            btn_Agregar.Location = new Point(29, 112);
+            btn_Agregar.Location = new Point(307, 119);
             btn_Agregar.Name = "btn_Agregar";
             btn_Agregar.Size = new Size(161, 59);
             btn_Agregar.TabIndex = 10;
             btn_Agregar.Text = "Agregar";
             btn_Agregar.UseVisualStyleBackColor = false;
             btn_Agregar.Click += btn_Agregar_Click;
-            // 
-            // label5
-            // 
-            label5.Location = new Point(0, 0);
-            label5.Name = "label5";
-            label5.Size = new Size(100, 23);
-            label5.TabIndex = 12;
-            // 
-            // txt_Nombre
-            // 
-            txt_Nombre.Location = new Point(31, 31);
-            txt_Nombre.Name = "txt_Nombre";
-            txt_Nombre.Size = new Size(125, 27);
-            txt_Nombre.TabIndex = 0;
             // 
             // label1
             // 
@@ -179,42 +219,16 @@
             label1.TabIndex = 1;
             label1.Text = "Nombre";
             // 
-            // label2
-            // 
-            label2.AccessibleRole = AccessibleRole.Cursor;
-            label2.AutoSize = true;
-            label2.BackColor = Color.SteelBlue;
-            label2.Font = new Font("MS UI Gothic", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.Black;
-            label2.Location = new Point(201, 18);
-            label2.Name = "label2";
-            label2.Size = new Size(300, 28);
-            label2.TabIndex = 5;
-            label2.Text = "Gestión De Categorías";
-            // 
-            // btn_Mostrar
-            // 
-            btn_Mostrar.BackColor = Color.FromArgb(0, 0, 20);
-            btn_Mostrar.Font = new Font("Lucida Bright", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_Mostrar.ForeColor = SystemColors.ButtonHighlight;
-            btn_Mostrar.Location = new Point(216, 112);
-            btn_Mostrar.Name = "btn_Mostrar";
-            btn_Mostrar.Size = new Size(161, 59);
-            btn_Mostrar.TabIndex = 15;
-            btn_Mostrar.Text = "Mostrar Categorías";
-            btn_Mostrar.UseVisualStyleBackColor = false;
-            btn_Mostrar.Click += btn_Mostrar_Click;
-            // 
-            // VistaCategoria
+            // VistaVendedor
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
-            ClientSize = new Size(702, 453);
+            ClientSize = new Size(820, 453);
             Controls.Add(label2);
             Controls.Add(panel1);
-            Name = "VistaCategoria";
-            Text = "VistaCategoria";
+            Name = "VistaVendedor";
+            Text = "VistaVendedor";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
@@ -225,23 +239,20 @@
 
         #endregion
 
+        private Label label2;
         private Panel panel1;
         private Button btn_Cerrar;
         private Panel panel2;
-        private Button btn_Historial;
-        private TextBox txt_precio;
-        private Button btn_Descuento;
-        private Button btn_Eliminar;
+        private Label label8;
         private Button btn_Asignar;
         private Label label7;
-        private TextBox txt_IDProducto;
         private Button btn_Agregar;
-        private Label label5;
-        private TextBox txt_Nombre;
         private Label label1;
-        private Label label2;
-        private Label label8;
-        private TextBox txt_IDCategoria;
-        private Button btn_Mostrar;
+        private TextBox txt_Nombre;
+        private Label label3;
+        private TextBox txt_Apellido;
+        private Button btn_Despedir;
+        private TextBox txt_IdVendedor;
+        private TextBox txt_IdSucursal;
     }
 }

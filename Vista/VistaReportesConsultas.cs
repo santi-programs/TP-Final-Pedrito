@@ -15,7 +15,13 @@ namespace Vista
     public partial class VistaReportesConsultas : Form
     {
         private ControladorReporte controlador;
-        List<Sucursal> listaSucursales = new List<Sucursal>();
+        public enum TipoReporte
+        {
+            PorSucursal,
+            PorVendedor,
+            PorProducto,
+            PorFecha
+        }
         public VistaReportesConsultas()
         {
 
@@ -25,16 +31,59 @@ namespace Vista
 
         private void VistaReportesConsultas_Load(object sender, EventArgs e)
         {
-           // cbo_Sucursal.DataSource = listaSucursales;
-            //cbo_Sucursal.DisplayMember = "Direccion";
-            //cbo_Sucursal.ValueMember = "IDSucursal";
 
         }
 
         private void btn_VentasSucursal_Click(object sender, EventArgs e)
         {
-            
-            //Necesito acceder la base de datos para poder testear
+            var datos = controlador.ObtenerDatosBase();
+
+            var vista = new VistaReporteVentas(datos, TipoReporte.PorSucursal);
+            vista.ShowDialog();
+        }
+
+        private void btn_VentasVendedor_Click(object sender, EventArgs e)
+        {
+            var datos = controlador.ObtenerDatosBase();
+
+            var vista = new VistaReporteVentas(datos, TipoReporte.PorVendedor);
+            vista.ShowDialog();
+        }
+
+        private void btn_VentasProducto_Click(object sender, EventArgs e)
+        {
+            var datos = controlador.ObtenerDatosBase();
+
+            var vista = new VistaReporteVentas(datos, TipoReporte.PorProducto);
+            vista.ShowDialog();
+        }
+
+        private void btn_VentasFecha_Click(object sender, EventArgs e)
+        {
+            var datos = controlador.ObtenerDatosBase();
+
+            var vista = new VistaReporteVentas(datos, TipoReporte.PorFecha);
+            vista.ShowDialog();
+        }
+
+        private void btn_MasVendido_Click(object sender, EventArgs e)
+        {
+            var resultado = controlador.ProdMasVendido();
+
+            MessageBox.Show(resultado.ToString());
+
+        }
+
+        private void btn_EstadoCuenta_Click(object sender, EventArgs e)
+        {
+            int Id = int.Parse(txt_ID.Text);
+
+            controlador.EstadoDeCuenta(Id);
+        }
+
+        private void btn_Cerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

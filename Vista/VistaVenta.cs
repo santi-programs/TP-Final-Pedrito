@@ -87,16 +87,11 @@ namespace Vista
 
         private void btn_Factura_Click(object sender, EventArgs e)
         {
-            // 1. Obtenemos el ID del producto o venta
             int idVenta = int.Parse(txt_ID.Text);
 
-            // 2. Llamamos a tu lógica (la que ya tenés en el Modelo)
             string contenido = controlador.Factura(idVenta);
 
-            // 3. Creamos e instanciamos el nuevo formulario pasándole el texto
             VistaFactura pantallaFactura = new VistaFactura(contenido);
-
-            // 4. Lo mostramos como diálogo (bloquea la de atrás hasta que cierres esta)
             pantallaFactura.ShowDialog();
 
         }

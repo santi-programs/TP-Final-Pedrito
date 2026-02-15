@@ -1,6 +1,6 @@
 ﻿namespace Vista
 {
-    partial class VistaFactura
+    partial class VistaReporteVentas
     {
         /// <summary>
         /// Required designer variable.
@@ -28,24 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            rtb_Contenido = new RichTextBox();
+            dgv_Reporte = new DataGridView();
             btn_Cerrar = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgv_Reporte).BeginInit();
             SuspendLayout();
             // 
-            // rtb_Contenido
+            // dgv_Reporte
             // 
-            rtb_Contenido.Location = new Point(-1, -1);
-            rtb_Contenido.Name = "rtb_Contenido";
-            rtb_Contenido.Size = new Size(807, 473);
-            rtb_Contenido.TabIndex = 0;
-            rtb_Contenido.Text = "";
+            dgv_Reporte.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgv_Reporte.Location = new Point(-2, -2);
+            dgv_Reporte.Name = "dgv_Reporte";
+            dgv_Reporte.RowHeadersWidth = 51;
+            dgv_Reporte.Size = new Size(806, 384);
+            dgv_Reporte.TabIndex = 0;
             // 
             // btn_Cerrar
             // 
             btn_Cerrar.BackColor = Color.FromArgb(0, 0, 20);
             btn_Cerrar.Font = new Font("Lucida Bright", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_Cerrar.ForeColor = SystemColors.ButtonHighlight;
-            btn_Cerrar.Location = new Point(310, 478);
+            btn_Cerrar.Location = new Point(326, 386);
             btn_Cerrar.Name = "btn_Cerrar";
             btn_Cerrar.Size = new Size(161, 59);
             btn_Cerrar.TabIndex = 15;
@@ -53,24 +55,23 @@
             btn_Cerrar.UseVisualStyleBackColor = false;
             btn_Cerrar.Click += btn_Cerrar_Click;
             // 
-            // VistaFactura
+            // VistaReporteVentas
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
-            ClientSize = new Size(805, 542);
+            ClientSize = new Size(800, 450);
             Controls.Add(btn_Cerrar);
-            Controls.Add(rtb_Contenido);
-            FormBorderStyle = FormBorderStyle.FixedDialog;
-            Name = "VistaFactura";
-            StartPosition = FormStartPosition.CenterParent;
-            Text = "VistaFactura";
+            Controls.Add(dgv_Reporte);
+            Name = "VistaReporteVentas";
+            Text = "VistaReporteVentas";
+            ((System.ComponentModel.ISupportInitialize)dgv_Reporte).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private RichTextBox rtb_Contenido;
+        private DataGridView dgv_Reporte;
         private Button btn_Cerrar;
     }
 }

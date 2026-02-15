@@ -22,11 +22,12 @@ namespace Controlador
         }
         private readonly GestionReporte gestion = GestionReporte.ObtenerInstancia();
 
+        public List<ReporteConsulta> ObtenerDatosBase() => gestion.ObtenerDatosBase();
         public object VentasPorSucursal(List<ReporteConsulta> datos) => gestion.ObtenerVentasPorSucursal(datos);
         public object VentasPorVendedor(List<ReporteConsulta> datos) => gestion.ObtenerVentasPorVendedor(datos);
         public object VentasPorProducto(List<ReporteConsulta> datos) => gestion.ObtenerVentasPorProducto(datos);
         public object VentasPorFecha(List<ReporteConsulta> datos) => gestion.ObtenerVentasPorFecha(datos);
-        public List<Venta> ProdMasVendido() => gestion.ProductoMasVendido();
+        public object ProdMasVendido() => gestion.ProductoMasVendido();
         public string EstadoDeCuenta(int idBuscado) => gestion.EstadoDeCuentaCliente(idBuscado);
     }
 }

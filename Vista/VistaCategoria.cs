@@ -46,5 +46,14 @@ namespace Vista
         {
             this.Close();
         }
+
+        private void btn_Mostrar_Click(object sender, EventArgs e)
+        {
+            List<Categoria> lista = controlaldor.Listar();
+
+            VistaListaCategorias vista = new VistaListaCategorias(lista);
+            vista.ShowDialog();
+
+        }
     }
 }

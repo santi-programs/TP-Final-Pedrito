@@ -12,15 +12,22 @@ namespace Vista
 {
     public partial class VistaFactura : Form
     {
-        // Constructor modificado para recibir el texto
+
 
         public VistaFactura(string textoFactura)
         {
             InitializeComponent();
 
-            rtb_Contenido.Text = textoFactura;
-            // Ponemos el fondo blanco para que parezca papel
-            this.BackColor = Color.White;
+            rtb_Contenido.Clear();
+
+            rtb_Contenido.SelectionAlignment = HorizontalAlignment.Center;
+            rtb_Contenido.SelectionFont = new Font("Consolas", 14, FontStyle.Bold);
+            rtb_Contenido.AppendText("FACTURA DE VENTA\n\n");
+
+            rtb_Contenido.SelectionAlignment = HorizontalAlignment.Left;
+            rtb_Contenido.SelectionFont = new Font("Consolas", 11, FontStyle.Regular);
+            rtb_Contenido.AppendText(textoFactura);
+
         }
 
         private void btn_Cerrar_Click(object sender, EventArgs e)

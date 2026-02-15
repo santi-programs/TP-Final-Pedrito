@@ -22,6 +22,7 @@ namespace Controlador
         }
         private readonly GestionCategorias gestion = GestionCategorias.ObtenerInstancia();
 
+        public List<Categoria> Listar() => gestion.ListarCategorias();
         public void Agregar(Categoria c) => gestion.AgregarCategoria(c);
         public void Asignar(int idProducto, int idCategoria) => gestion.AsignarCategoria(idProducto, idCategoria);
 

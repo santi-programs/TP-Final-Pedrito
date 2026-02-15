@@ -23,6 +23,15 @@ namespace Modelo
 
         private readonly GestionVentas gestionVentas = new GestionVentas();
 
+        public List<ReporteConsulta> ObtenerDatosBase()
+        {
+            using (var db = new Context())
+            {
+                return db.ReporteConsulta.ToList();
+            }
+        }
+
+
         public object ObtenerVentasPorSucursal(List<ReporteConsulta> datos)
         {
             var reporte = datos.GroupBy(d => d.Sucursal.Trim().ToUpper())
@@ -75,11 +84,23 @@ namespace Modelo
             return reporte;
         }
 
-        public List<Venta> ProductoMasVendido()
+        public object ProductoMasVendido()
         {
             var ventas = gestionVentas.ListarVentas();
-            return ventas;
+
+            var resultado = ventas
+                .GroupBy(v => v.ProductoID)
+                .Select(g => new
+                {
+                    ProductoID = g.Key,
+                    CantidadVendida = g.Count()
+                })
+                .OrderByDescending(x => x.CantidadVendida)
+                .FirstOrDefault();
+
+            return resultado;
         }
+
 
         public string EstadoDeCuentaCliente(int idBuscado)
         {

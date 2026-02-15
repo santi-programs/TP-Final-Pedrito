@@ -13,10 +13,22 @@
     <Compile Update="VistaFactura.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="VistaListaCategorias.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="VistaProducto.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="VistaReportesConsultas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="VistaReporteVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="VistaSucursal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="VistaVendedor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="VistaVenta.cs">

@@ -24,6 +24,7 @@ namespace Controlador
 
         private readonly GestionVendedores gestion = GestionVendedores.ObtenerInstancia();
 
+        public List<Vendedor> Listar() => gestion.ListarVendedores();
         public void Agregar(Vendedor v) => gestion.AgregarVendedor(v);
         public bool AsignarSucursal(int idVendedor, int idSucursal) => gestion.AsignarSucursalAVendedor(idVendedor, idSucursal);
         public void Despedir(int idVendedor) => gestion.DespedirVendedor(idVendedor);

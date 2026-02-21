@@ -22,11 +22,37 @@ namespace Vista
         public VistaReporteVentas(List<ReporteConsulta> datos, TipoReporte tipo)
         {
             InitializeComponent();
-            datos = datos;
-            tipo = tipo;
+            this.datos = datos;
+            this.tipo = tipo;
             controlador = new ControladorReporte();
+            CargarReporte();
         }
+        private void CargarReporte()
+        {
+            object resultado = null;
 
+            switch (tipo)
+            {
+                case TipoReporte.PorSucursal:
+                    resultado = controlador.VentasPorSucursal(datos);
+                    break;
+
+                case TipoReporte.PorVendedor:
+                    resultado = controlador.VentasPorVendedor(datos);
+                    break;
+
+                case TipoReporte.PorProducto:
+                    resultado = controlador.VentasPorProducto(datos);
+                    break;
+
+                case TipoReporte.PorFecha:
+                    resultado = controlador.VentasPorFecha(datos);
+                    break;
+            }
+
+            dgv_Reporte.DataSource = null;
+            dgv_Reporte.DataSource = resultado;
+        }
         private void VistaReporteVentas_Load(object sender, EventArgs e)
         {
             object resultado = null;

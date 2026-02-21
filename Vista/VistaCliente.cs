@@ -31,6 +31,14 @@ namespace Vista
 
         private void btn_Agregar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txt_Nombre.Text) ||
+               string.IsNullOrEmpty(txt_Apellido.Text) ||
+               string.IsNullOrEmpty(txt_DNI.Text) ||
+               string.IsNullOrEmpty(txt_Telefono.Text))
+            {
+                MessageBox.Show("Por favor, complete todos los campos para agregar el cliente.");
+                return;
+            }
             Cliente c = new Cliente
             {
                 Nombre = txt_Nombre.Text,
@@ -42,10 +50,25 @@ namespace Vista
 
             controlador.Agregar(c);
             MessageBox.Show("Cliente agregado");
+
+            txt_Apellido.Clear();
+            txt_DNI.Clear();
+            txt_Nombre.Clear();
+            txt_Telefono.Clear();
+
         }
 
         private void btn_Modificar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txt_ID.Text) ||
+                string.IsNullOrEmpty(txt_Nombre.Text) ||
+                string.IsNullOrEmpty(txt_Apellido.Text) ||
+                string.IsNullOrEmpty(txt_DNI.Text) ||
+                string.IsNullOrEmpty(txt_Telefono.Text))
+            {
+                MessageBox.Show("Por favor, complete todos los campos para modificar el cliente.");
+                return;
+            }
             Cliente c = new Cliente
             {
                 ClienteID = int.Parse(txt_ID.Text),
@@ -58,6 +81,11 @@ namespace Vista
 
             controlador.Modificar(c);
             MessageBox.Show("Cliente modificado");
+
+            txt_Apellido.Clear();
+            txt_DNI.Clear();
+            txt_Nombre.Clear();
+            txt_Telefono.Clear();
         }
 
         private void btn_Eliminar_Click(object sender, EventArgs e)

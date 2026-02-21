@@ -27,7 +27,7 @@ namespace Controlador
         public void Agregar(Producto p) => gestion.AgregarProducto(p);
         public void Modificar(Producto p) => gestion.ModificarProducto(p);
         public void Eliminar(int id) => gestion.EliminarProducto(id);
-        public List<Producto> BuscarPorSucursal(string sucursal) => gestion.ListarProductos().Where(p => p.Sucursal == sucursal).ToList();
+        public List<Producto> BuscarPorSucursal(string sucursal) => gestion.BuscarProductosPorSucursal(sucursal);
 
 
 

@@ -34,7 +34,7 @@ namespace Vista
         private void btn_Agregar_Click(object sender, EventArgs e)
         {
 
-            // Validaciones
+            
             if (cbo_Producto.SelectedValue == null)
             {
                 MessageBox.Show("Seleccione un producto");
@@ -53,10 +53,10 @@ namespace Vista
                 return;
             }
 
-            // Crear venta
+           
             Venta v = new Venta
             {
-                ProductoID = (int)cbo_Producto.SelectedValue,  // ✅ Obtiene el ID (no el nombre)
+                ProductoID = (int)cbo_Producto.SelectedValue,  
                 Cantidad = cantidad,
                 Monto = monto,
                 metodoPago = cbo_MetodoPago.Text,
@@ -70,19 +70,30 @@ namespace Vista
             {
                 controlador.Agregar(v);
                 MessageBox.Show("Venta agregada");
+
+                txt_Cantidad.Clear();
+                txt_Monto.Clear();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al agregar venta: " + ex.Message);
 
-                // Para debug más completo:
+                
                 Console.WriteLine(ex.InnerException?.Message);
             }
         }
 
         private void btn_Descuento_Click(object sender, EventArgs e)
         {
-
+            if (int.TryParse(txt_ID.Text, out int id))
+            {
+                string resultado = controlador.DetalleVentaConDescuento(id);
+                MessageBox.Show(resultado);
+            }
+            else
+            {
+                MessageBox.Show("Ingrese un ID válido");
+            }
         }
 
         private void btn_Factura_Click(object sender, EventArgs e)
@@ -124,22 +135,26 @@ namespace Vista
                 return;
             }
 
-            // CREAR objeto venta con el ID existente
+           
             Venta v = new Venta
             {
-                VentaID = int.Parse(txt_ID.Text), // ⭐ IMPORTANTE: necesitas el ID de la venta a modificar
+                VentaID = int.Parse(txt_ID.Text), 
                 ProductoID = (int)cbo_Producto.SelectedValue,
                 ClienteID = (int)cbo_Cliente.SelectedValue,
                 Cantidad = cantidad,
                 Monto = monto,
                 metodoPago = cbo_MetodoPago.Text,
-                Fecha = dtp_Fecha.Value
+                Fecha = dtp_Fecha.Value,
+                VendedorID = (int)cbo_Vendedor.SelectedValue
             };
 
             try
             {
                 controlador.Modificar(v);
                 MessageBox.Show("Venta modificada correctamente");
+                txt_Cantidad.Clear();
+                txt_Monto.Clear();
+
             }
             catch (Exception ex)
             {
@@ -152,6 +167,7 @@ namespace Vista
             int id = int.Parse(txt_ID.Text);
             controlador.Eliminar(id);
             MessageBox.Show("Venta eliminada");
+
         }
 
         private void btn_Cerrar_Click(object sender, EventArgs e)
@@ -164,20 +180,36 @@ namespace Vista
             var controlador = ControladorMetodoPago.ObtenerInstancia();
             var productos = ControladorProducto.ObtenerInstancia();
             var clientes = ControladorCliente.ObtenerInstancia();
+            var vendedor = ControladorVendedor.ObtenerInstancia();
 
-            cbo_MetodoPago.DataSource = controlador.Listar();  // Ahora devuelve los 4 métodos
-            cbo_MetodoPago.DisplayMember = "Display";          // Muestra "1 - Efectivo", etc.
-            cbo_MetodoPago.ValueMember = "MetodoPagoID";       // ID interno
+            cbo_MetodoPago.DataSource = controlador.Listar();  
+            cbo_MetodoPago.DisplayMember = "Display";          
+            cbo_MetodoPago.ValueMember = "MetodoPagoID";       
 
-            cbo_Producto.DataSource = productos.Listar();  
-            cbo_Producto.DisplayMember = "Nombre";          
+            cbo_Producto.DataSource = productos.Listar();
+            cbo_Producto.DisplayMember = "Nombre";
             cbo_Producto.ValueMember = "ProductoID";
 
-            cbo_Cliente.DataSource = clientes.Listar();  
-            cbo_Cliente.DisplayMember = "Nombre";          
+            cbo_Cliente.DataSource = clientes.Listar();
+            cbo_Cliente.DisplayMember = "Nombre";
             cbo_Cliente.ValueMember = "ClienteID";
+
+            cbo_Vendedor.DataSource = vendedor.Listar();
+            cbo_Vendedor.DisplayMember = "Nombre";  
+            cbo_Vendedor.ValueMember = "VendedorID";
         }
 
-       
+        private void btn_ActualizarStock_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(txt_ID.Text, out int id))
+            {
+                string resultado = controlador.ActualizarInv(id);
+                MessageBox.Show(resultado);
+            }
+            else
+            {
+                MessageBox.Show("Ingrese un ID válido");
+            }
+        }
     }
 }

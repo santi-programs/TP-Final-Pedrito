@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            label13 = new Label();
+            cbo_Vendedor = new ComboBox();
+            label12 = new Label();
+            cbo_Cliente = new ComboBox();
             label11 = new Label();
             cbo_Producto = new ComboBox();
             label8 = new Label();
@@ -37,6 +41,7 @@
             cbo_MetodoPago = new ComboBox();
             btn_Cerrar = new Button();
             panel2 = new Panel();
+            btn_ActualizarStock = new Button();
             btn_Factura = new Button();
             btn_Eliminar = new Button();
             btn_Modificar = new Button();
@@ -53,8 +58,6 @@
             label1 = new Label();
             label2 = new Label();
             label9 = new Label();
-            cbo_Cliente = new ComboBox();
-            label12 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -62,6 +65,8 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(0, 0, 64);
+            panel1.Controls.Add(label13);
+            panel1.Controls.Add(cbo_Vendedor);
             panel1.Controls.Add(label12);
             panel1.Controls.Add(cbo_Cliente);
             panel1.Controls.Add(label11);
@@ -82,9 +87,48 @@
             panel1.Controls.Add(label1);
             panel1.Location = new Point(32, 57);
             panel1.Name = "panel1";
-            panel1.Size = new Size(942, 484);
+            panel1.Size = new Size(942, 506);
             panel1.TabIndex = 5;
             panel1.Paint += panel1_Paint;
+            // 
+            // label13
+            // 
+            label13.AccessibleRole = AccessibleRole.Cursor;
+            label13.AutoSize = true;
+            label13.Font = new Font("SimSun", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label13.ForeColor = Color.White;
+            label13.Location = new Point(243, 292);
+            label13.Name = "label13";
+            label13.Size = new Size(97, 20);
+            label13.TabIndex = 26;
+            label13.Text = "Vendedor";
+            // 
+            // cbo_Vendedor
+            // 
+            cbo_Vendedor.FormattingEnabled = true;
+            cbo_Vendedor.Location = new Point(29, 290);
+            cbo_Vendedor.Name = "cbo_Vendedor";
+            cbo_Vendedor.Size = new Size(204, 28);
+            cbo_Vendedor.TabIndex = 25;
+            // 
+            // label12
+            // 
+            label12.AccessibleRole = AccessibleRole.Cursor;
+            label12.AutoSize = true;
+            label12.Font = new Font("SimSun", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label12.ForeColor = Color.White;
+            label12.Location = new Point(243, 250);
+            label12.Name = "label12";
+            label12.Size = new Size(86, 20);
+            label12.TabIndex = 24;
+            label12.Text = "Cliente";
+            // 
+            // cbo_Cliente
+            // 
+            cbo_Cliente.Location = new Point(29, 248);
+            cbo_Cliente.Name = "cbo_Cliente";
+            cbo_Cliente.Size = new Size(204, 28);
+            cbo_Cliente.TabIndex = 23;
             // 
             // label11
             // 
@@ -160,16 +204,30 @@
             // panel2
             // 
             panel2.BackColor = Color.PowderBlue;
+            panel2.Controls.Add(btn_ActualizarStock);
             panel2.Controls.Add(btn_Factura);
             panel2.Controls.Add(btn_Eliminar);
             panel2.Controls.Add(btn_Modificar);
             panel2.Controls.Add(btn_Descuento);
             panel2.Controls.Add(label7);
             panel2.Controls.Add(txt_ID);
-            panel2.Location = new Point(29, 295);
+            panel2.Location = new Point(29, 330);
             panel2.Name = "panel2";
             panel2.Size = new Size(579, 159);
             panel2.TabIndex = 13;
+            // 
+            // btn_ActualizarStock
+            // 
+            btn_ActualizarStock.BackColor = Color.FromArgb(0, 0, 20);
+            btn_ActualizarStock.Font = new Font("Lucida Bright", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_ActualizarStock.ForeColor = SystemColors.ButtonHighlight;
+            btn_ActualizarStock.Location = new Point(214, 91);
+            btn_ActualizarStock.Name = "btn_ActualizarStock";
+            btn_ActualizarStock.Size = new Size(161, 59);
+            btn_ActualizarStock.TabIndex = 20;
+            btn_ActualizarStock.Text = "Actualizar Stock";
+            btn_ActualizarStock.UseVisualStyleBackColor = false;
+            btn_ActualizarStock.Click += btn_ActualizarStock_Click;
             // 
             // btn_Factura
             // 
@@ -230,7 +288,7 @@
             label7.BackColor = Color.FromArgb(0, 0, 20);
             label7.Font = new Font("SimSun", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.White;
-            label7.Location = new Point(344, 70);
+            label7.Location = new Point(344, 34);
             label7.Name = "label7";
             label7.Size = new Size(31, 20);
             label7.TabIndex = 15;
@@ -238,7 +296,7 @@
             // 
             // txt_ID
             // 
-            txt_ID.Location = new Point(203, 70);
+            txt_ID.Location = new Point(203, 34);
             txt_ID.Name = "txt_ID";
             txt_ID.Size = new Size(125, 27);
             txt_ID.TabIndex = 14;
@@ -335,31 +393,12 @@
             label9.TabIndex = 7;
             label9.Text = "Gestión De Ventas";
             // 
-            // cbo_Cliente
-            // 
-            cbo_Cliente.Location = new Point(29, 248);
-            cbo_Cliente.Name = "cbo_Cliente";
-            cbo_Cliente.Size = new Size(204, 28);
-            cbo_Cliente.TabIndex = 23;
-            // 
-            // label12
-            // 
-            label12.AccessibleRole = AccessibleRole.Cursor;
-            label12.AutoSize = true;
-            label12.Font = new Font("SimSun", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label12.ForeColor = Color.White;
-            label12.Location = new Point(243, 250);
-            label12.Name = "label12";
-            label12.Size = new Size(86, 20);
-            label12.TabIndex = 24;
-            label12.Text = "Cliente";
-            // 
             // VistaVenta
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
-            ClientSize = new Size(1006, 553);
+            ClientSize = new Size(1006, 597);
             Controls.Add(label9);
             Controls.Add(panel1);
             Controls.Add(label2);
@@ -403,5 +442,8 @@
         private Label label11;
         private Label label12;
         private ComboBox cbo_Cliente;
+        private Button btn_ActualizarStock;
+        private Label label13;
+        private ComboBox cbo_Vendedor;
     }
 }

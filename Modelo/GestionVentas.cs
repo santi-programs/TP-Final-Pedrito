@@ -22,7 +22,6 @@ namespace Modelo
             }
             return instancia;
         }
-        //Aca utilize la Base de Datos para haceer las operaciones CRUD
         public List<Venta> ListarVentas()
         {
             using (var context = new Context())
@@ -44,7 +43,17 @@ namespace Modelo
             {
                 using (var context = new Context())
                 {
-                    context.Venta.Add(v); // problema
+                    context.Venta.Add(v);
+                    var producto = context.Producto.Find(v.ProductoID);
+
+                    context.ReporteConsulta.Add(new ReporteConsulta
+                    {
+                        Fecha = v.Fecha,
+                        Producto = producto.Nombre,
+                        Sucursal = producto.Sucursal,
+                        VendedorID = v.VendedorID,
+                        Monto = v.Monto
+                    });
                     context.SaveChanges();
                 }
             }
@@ -62,8 +71,9 @@ namespace Modelo
                     // ⭐ Verificar que el producto y cliente existan
                     var productoExiste = context.Producto.Any(p => p.ProductoID == v.ProductoID);
                     var clienteExiste = context.Cliente.Any(c => c.ClienteID == v.ClienteID);
+                    var vendedorExiste = context.Vendedor.Any(ve => ve.VendedorID == v.VendedorID);
 
-                    if (!productoExiste)
+                if (!productoExiste)
                     {
                          throw new Exception("El producto seleccionado no existe");
                     }
@@ -72,8 +82,11 @@ namespace Modelo
                    {
                         throw new Exception("El cliente seleccionado no existe");
                    }
+                if (!vendedorExiste)
+                { 
+                    throw new Exception("El vendedor seleccionado no existe");
+                }
 
-                     // Actualizar
                     context.Venta.Update(v);
                     context.SaveChanges();
                 }
@@ -92,35 +105,51 @@ namespace Modelo
             }
         }
 
-        public object ObtenerDetalleVentaConDescuento(int idventa)
+        public string ObtenerDetalleVentaConDescuento(int idventa)
         {
             using (var context = new Context())
             {
-                var ventaInfo = context.Venta
-                    .Where(v => v.VentaID == idventa)
-                    .Select(v => new
-                    {
-                        v.VentaID,
-                        PrecioOriginal = v.Monto,
-                        DescuentoAplicado = v.ClienteRelacion.MinoristaMayorista ? v.Monto * 0.80 : v.Monto,
-                        EsMayorista = v.ClienteRelacion.MinoristaMayorista
-                    })
-                    .FirstOrDefault();
-                return ventaInfo;
+                var venta = context.Venta
+                    .Include(v => v.ClienteRelacion)
+                    .FirstOrDefault(v => v.VentaID == idventa);
+
+                if (venta == null)
+                    return "Venta no encontrada";
+
+                double porcentaje = venta.ClienteRelacion.MinoristaMayorista ? 0.20 : 0.0;
+                double descuento = venta.Monto * porcentaje;
+                double totalFinal = venta.Monto - descuento;
+
+                return $"Monto original: ${venta.Monto}\n" +
+                       $"Descuento aplicado: {porcentaje * 100}%\n" +
+                       $"Cálculo: {venta.Monto} - {descuento} = {totalFinal}\n" +
+                       $"Total final: ${totalFinal}";
             }
         }
 
-        public int ActualizarInventario(int idventa, int idproducto)
+        public string ActualizarInventario(int idventa)
         {
 
             using (var context = new Context())
             {
                 var venta = context.Venta.Find(idventa);
-                var producto = context.Producto.Find(idproducto);
 
+                if (venta == null)
+                    return "Venta no encontrada";
 
-                int StockActualizado = producto.Stock - venta.Cantidad;
-                return StockActualizado;
+                var producto = context.Producto.Find(venta.ProductoID);
+
+                if (producto == null)
+                    return "Producto no encontrado";
+
+                int stockAnterior = producto.Stock;
+                producto.Stock -= venta.Cantidad;
+
+                context.SaveChanges();
+
+                return $"Stock anterior: {stockAnterior}\n" +
+                       $"Cantidad vendida: {venta.Cantidad}\n" +
+                       $"Nuevo stock: {producto.Stock}";
             }
 
         }

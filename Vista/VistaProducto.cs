@@ -23,6 +23,15 @@ namespace Vista
 
         private void btn_Agregar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txt_Nombre.Text) ||
+               string.IsNullOrEmpty(txt_Descripcion.Text) ||
+               string.IsNullOrEmpty(txt_Precio.Text) ||
+               string.IsNullOrEmpty(txt_Stock.Text) ||
+               string.IsNullOrEmpty(txt_Sucursal.Text))
+            {
+                MessageBox.Show("Por favor, complete todos los campos para modificar el producto.");
+                return;
+            }
             Producto p = new Producto()
             {
                 Nombre = txt_Nombre.Text,
@@ -35,10 +44,35 @@ namespace Vista
             controlador.Agregar(p);
             MessageBox.Show("Producto agregado");
 
+            txt_Descripcion.Clear();
+                txt_Nombre.Clear();
+                txt_Precio.Clear();
+                txt_Stock.Clear();
+                txt_Sucursal.Clear();
+
         }
 
         private void btn_Modificar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txt_ID.Text))
+            {
+                MessageBox.Show("Por favor, ingrese el ID del producto a modificar.");
+                return;
+            }
+            if (!int.TryParse(txt_ID.Text, out int id))
+            {
+                MessageBox.Show("ID inválido. Por favor, ingrese un número entero.");
+                return;
+            }
+            if (string.IsNullOrEmpty(txt_Nombre.Text) ||
+                string.IsNullOrEmpty(txt_Descripcion.Text) ||
+                string.IsNullOrEmpty(txt_Precio.Text) ||
+                string.IsNullOrEmpty(txt_Stock.Text) ||
+                string.IsNullOrEmpty(txt_Sucursal.Text))
+            {
+                MessageBox.Show("Por favor, complete todos los campos para modificar el producto.");
+                return;
+            }
             Producto p = new Producto()
             {
                 ProductoID = int.Parse(txt_ID.Text),
@@ -52,11 +86,17 @@ namespace Vista
             controlador.Modificar(p);
             MessageBox.Show("Producto modificado");
 
+            txt_Descripcion.Clear();
+            txt_Nombre.Clear();
+            txt_Precio.Clear();
+            txt_Stock.Clear();
+            txt_Sucursal.Clear();
 
         }
 
         private void btn_Eliminar_Click(object sender, EventArgs e)
         {
+
             int id = int.Parse(txt_ID.Text);
             controlador.Eliminar(id);
             MessageBox.Show("Producto eliminado");
@@ -64,6 +104,7 @@ namespace Vista
 
         private void btn_BuscarPorSucursal_Click(object sender, EventArgs e)
         {
+
             string sucursal = txt_Sucursal.Text;
             var productos = controlador.BuscarPorSucursal(sucursal);
             StringBuilder sb = new StringBuilder();
@@ -76,6 +117,7 @@ namespace Vista
                     $" Sucursal: {producto.Sucursal}");
             }
             MessageBox.Show(sb.ToString());
+
         }
 
         private void btn_Cerrar_Click(object sender, EventArgs e)

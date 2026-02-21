@@ -76,9 +76,17 @@ namespace Vista
 
         private void btn_EstadoCuenta_Click(object sender, EventArgs e)
         {
-            int Id = int.Parse(txt_ID.Text);
+            int id;
 
-            controlador.EstadoDeCuenta(Id);
+            if (int.TryParse(txt_ID.Text, out id))
+            {
+                string resultado = controlador.EstadoDeCuenta(id);
+                MessageBox.Show(resultado);
+            }
+            else
+            {
+                MessageBox.Show("Ingrese un ID válido");
+            }
         }
 
         private void btn_Cerrar_Click(object sender, EventArgs e)

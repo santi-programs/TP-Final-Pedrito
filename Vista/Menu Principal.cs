@@ -22,12 +22,8 @@ namespace Vista
         }
 
 
-        private void btn_VistaCliente_Click(object sender, EventArgs e) { }
 
-
-
-
-        private void btn_VistaReportesConsultas_Click(object sender, EventArgs e){}
+        private void btn_VistaReportesConsultas_Click(object sender, EventArgs e) { }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -125,6 +121,23 @@ namespace Vista
         {
             VistaReportesConsultas formReportes = new VistaReportesConsultas();
             formReportes.Show();
+        }
+
+        private void btn_Cerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btn_VistaVendedor_Click(object sender, EventArgs e)
+        {
+            VistaVendedor formvendedor = new VistaVendedor();
+            formvendedor.Show();
+        }
+
+        private void btn_Sucursal_Click(object sender, EventArgs e)
+        {
+            VistaSucursal formSucursal = new VistaSucursal();
+            formSucursal.Show();
         }
     }
 }

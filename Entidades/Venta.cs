@@ -13,6 +13,7 @@ namespace Entidades
         public double Monto { get; set; }
         public DateTime Fecha { get; set; }
         public int Cantidad { get; set; }
+        public int VendedorID { get; set; }
 
         [ForeignKey("ClienteID")]  
         public virtual Cliente ClienteRelacion { get; set; }
@@ -22,14 +23,15 @@ namespace Entidades
 
         public Venta() { }
 
-        public Venta(int idVenta, int idProducto, int idCliente, string Mpago, double monto, int cantidad)
-        {
-            VentaID = idVenta;
-            ProductoID = idProducto;
-            ClienteID = idCliente;  // ⭐ AGREGAR ESTO
-            metodoPago = Mpago;
-            Monto = monto;
-            Cantidad = cantidad;
+            public Venta(int idVenta, int idProducto, int idCliente, string Mpago, double monto, int cantidad, int vendedorID)
+            {
+                VentaID = idVenta;
+                ProductoID = idProducto;
+                ClienteID = idCliente;  
+                metodoPago = Mpago;
+                Monto = monto;
+                Cantidad = cantidad;
+                VendedorID = vendedorID;
         }
     }
 }

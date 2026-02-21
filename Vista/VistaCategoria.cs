@@ -23,6 +23,10 @@ namespace Vista
 
         private void btn_Agregar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txt_Nombre.Text))
+            {
+                MessageBox.Show("Por favor, complete el campo de nombre para agregar la categoria.");
+            }
             Categoria c = new Categoria()
             {
                 Nombre = txt_Nombre.Text
@@ -30,16 +34,23 @@ namespace Vista
 
             controlaldor.Agregar(c);
             MessageBox.Show("Categoria agregada");
+                txt_Nombre.Clear();
         }
 
         private void btn_Asignar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txt_IDProducto.Text) || string.IsNullOrEmpty(txt_IDCategoria.Text))
+            {
+                MessageBox.Show("Por favor, complete ambos campos para asignar la categoria al producto.");
+                return;
+            }
             int idProducto = int.Parse(txt_IDProducto.Text);
             int idCategoria = int.Parse(txt_IDCategoria.Text);
 
             controlaldor.Asignar(idProducto, idCategoria);
             MessageBox.Show("Categoria asignada al producto");
 
+            txt_Nombre.Clear();
         }
 
         private void btn_Cerrar_Click(object sender, EventArgs e)

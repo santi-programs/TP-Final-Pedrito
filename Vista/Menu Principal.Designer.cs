@@ -44,6 +44,9 @@
             panel10 = new Panel();
             panel11 = new Panel();
             panel12 = new Panel();
+            btn_VistaVendedor = new Button();
+            btn_Cerrar = new Button();
+            btn_Sucursal = new Button();
             SuspendLayout();
             // 
             // btn_Venta
@@ -51,7 +54,7 @@
             btn_Venta.BackColor = Color.FromArgb(0, 0, 20);
             btn_Venta.Font = new Font("Lucida Bright", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_Venta.ForeColor = SystemColors.ButtonHighlight;
-            btn_Venta.Location = new Point(798, 346);
+            btn_Venta.Location = new Point(790, 262);
             btn_Venta.Name = "btn_Venta";
             btn_Venta.Size = new Size(161, 59);
             btn_Venta.TabIndex = 11;
@@ -64,7 +67,7 @@
             btn_VistaCliente.BackColor = Color.FromArgb(0, 0, 20);
             btn_VistaCliente.Font = new Font("Lucida Bright", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_VistaCliente.ForeColor = SystemColors.ButtonHighlight;
-            btn_VistaCliente.Location = new Point(550, 346);
+            btn_VistaCliente.Location = new Point(548, 262);
             btn_VistaCliente.Name = "btn_VistaCliente";
             btn_VistaCliente.Size = new Size(161, 59);
             btn_VistaCliente.TabIndex = 12;
@@ -77,7 +80,7 @@
             btn_VistaReportesConsultas.BackColor = Color.FromArgb(0, 0, 20);
             btn_VistaReportesConsultas.Font = new Font("Lucida Bright", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_VistaReportesConsultas.ForeColor = SystemColors.ButtonHighlight;
-            btn_VistaReportesConsultas.Location = new Point(72, 346);
+            btn_VistaReportesConsultas.Location = new Point(68, 262);
             btn_VistaReportesConsultas.Name = "btn_VistaReportesConsultas";
             btn_VistaReportesConsultas.Size = new Size(161, 59);
             btn_VistaReportesConsultas.TabIndex = 14;
@@ -90,7 +93,7 @@
             btn_VistaProductos.BackColor = Color.FromArgb(0, 0, 20);
             btn_VistaProductos.Font = new Font("Lucida Bright", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_VistaProductos.ForeColor = SystemColors.ButtonHighlight;
-            btn_VistaProductos.Location = new Point(294, 346);
+            btn_VistaProductos.Location = new Point(293, 262);
             btn_VistaProductos.Name = "btn_VistaProductos";
             btn_VistaProductos.Size = new Size(161, 59);
             btn_VistaProductos.TabIndex = 15;
@@ -194,12 +197,54 @@
             panel12.Size = new Size(10, 142);
             panel12.TabIndex = 27;
             // 
+            // btn_VistaVendedor
+            // 
+            btn_VistaVendedor.BackColor = Color.FromArgb(0, 0, 20);
+            btn_VistaVendedor.Font = new Font("Lucida Bright", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_VistaVendedor.ForeColor = SystemColors.ButtonHighlight;
+            btn_VistaVendedor.Location = new Point(158, 392);
+            btn_VistaVendedor.Name = "btn_VistaVendedor";
+            btn_VistaVendedor.Size = new Size(161, 59);
+            btn_VistaVendedor.TabIndex = 30;
+            btn_VistaVendedor.Text = "Gestión De Vendedores";
+            btn_VistaVendedor.UseVisualStyleBackColor = false;
+            btn_VistaVendedor.Click += btn_VistaVendedor_Click;
+            // 
+            // btn_Cerrar
+            // 
+            btn_Cerrar.BackColor = Color.FromArgb(0, 0, 20);
+            btn_Cerrar.Font = new Font("Lucida Bright", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_Cerrar.ForeColor = SystemColors.ButtonHighlight;
+            btn_Cerrar.Location = new Point(413, 392);
+            btn_Cerrar.Name = "btn_Cerrar";
+            btn_Cerrar.Size = new Size(161, 59);
+            btn_Cerrar.TabIndex = 29;
+            btn_Cerrar.Text = "Cerrar";
+            btn_Cerrar.UseVisualStyleBackColor = false;
+            btn_Cerrar.Click += btn_Cerrar_Click;
+            // 
+            // btn_Sucursal
+            // 
+            btn_Sucursal.BackColor = Color.FromArgb(0, 0, 20);
+            btn_Sucursal.Font = new Font("Lucida Bright", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_Sucursal.ForeColor = SystemColors.ButtonHighlight;
+            btn_Sucursal.Location = new Point(655, 392);
+            btn_Sucursal.Name = "btn_Sucursal";
+            btn_Sucursal.Size = new Size(161, 59);
+            btn_Sucursal.TabIndex = 28;
+            btn_Sucursal.Text = "Gestion Sucursal";
+            btn_Sucursal.UseVisualStyleBackColor = false;
+            btn_Sucursal.Click += btn_Sucursal_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
             ClientSize = new Size(1006, 553);
+            Controls.Add(btn_VistaVendedor);
+            Controls.Add(btn_Cerrar);
+            Controls.Add(btn_Sucursal);
             Controls.Add(panel12);
             Controls.Add(panel11);
             Controls.Add(panel10);
@@ -240,5 +285,8 @@
         private Panel panel10;
         private Panel panel11;
         private Panel panel12;
+        private Button btn_VistaVendedor;
+        private Button btn_Cerrar;
+        private Button btn_Sucursal;
     }
 }

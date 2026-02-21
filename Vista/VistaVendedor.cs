@@ -23,6 +23,12 @@ namespace Vista
 
         private void btn_Agregar_Click(object sender, EventArgs e)
         {
+            if(string.IsNullOrEmpty(txt_Nombre.Text) ||
+               string.IsNullOrEmpty(txt_Apellido.Text))
+            {
+                MessageBox.Show("Por favor, complete todos los campos para agregar el vendedor.");
+                return;
+            }
             Vendedor v = new Vendedor
             {
                 Nombre = txt_Nombre.Text,
@@ -32,17 +38,26 @@ namespace Vista
             controlador.Agregar(v);
             MessageBox.Show("Vendedor agregado");
 
+            txt_Apellido.Clear();
+            txt_Nombre.Clear();
 
         }
 
         private void btn_Asignar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txt_IdVendedor.Text) ||
+               string.IsNullOrEmpty(txt_IdSucursal.Text))
+            {
+                MessageBox.Show("Por favor, Seleccione un vendedor y una sucursal.");
+                return;
+            }
             int idVendedor = int.Parse(txt_IdVendedor.Text);
             int idSucursal = int.Parse(txt_IdSucursal.Text);
 
             controlador.AsignarSucursal(idVendedor, idSucursal);
             MessageBox.Show("Sucursal asignada al vendedor");
-
+            txt_IdSucursal.Clear();
+             txt_IdVendedor.Clear();
         }
 
         private void btn_Despedir_Click(object sender, EventArgs e)

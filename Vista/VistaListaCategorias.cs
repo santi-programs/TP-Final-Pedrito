@@ -19,7 +19,7 @@ namespace Vista
 
             dgv_Categorias.DataSource = categorias;
 
-            dgv_Categorias.Columns["Id"].HeaderText = "ID";
+            dgv_Categorias.Columns["CategoriaID"].HeaderText = "ID";
             dgv_Categorias.Columns["Nombre"].HeaderText = "Nombre de Categoría";
 
             dgv_Categorias.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -28,7 +28,7 @@ namespace Vista
 
         private void btn_Cerrar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
         }
     }
 

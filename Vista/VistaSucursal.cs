@@ -23,6 +23,16 @@ namespace Vista
 
         private void btn_Agregar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txt_Direccion.Text))
+            {
+                MessageBox.Show("Por favor, complete todos los campos para agregar la sucursal.");
+            }
+
+            if (!int.TryParse(txt_Stock.Text, out int stock))
+            {
+                MessageBox.Show("Por favor, complete todos los campos para agregar la sucursal.");
+                return;
+            }
             Sucursal s = new Sucursal
             {
                 Direccion = txt_Direccion.Text,
@@ -31,10 +41,20 @@ namespace Vista
 
             controlador.Agregar(s);
             MessageBox.Show("Sucursal agregada");
+
+            txt_Stock.Clear();
+            txt_Direccion.Clear();
         }
 
         private void btn_Modificar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txt_ID.Text) ||
+                string.IsNullOrEmpty(txt_Direccion.Text) ||
+                string.IsNullOrEmpty(txt_Stock.Text))
+            {
+                MessageBox.Show("Por favor, complete todos los campos para modificar la sucursal.");
+                return;
+            }
             Sucursal s = new Sucursal
             {
                 Direccion = txt_Direccion.Text,
@@ -43,10 +63,19 @@ namespace Vista
 
             controlador.Modificar(s);
             MessageBox.Show("Sucursal Modificada");
+
+            txt_Stock.Clear();
+            txt_Direccion.Clear();
+            txt_ID.Clear();
         }
 
         private void btn_Eliminar_Click(object sender, EventArgs e)
         {
+            if(string.IsNullOrEmpty(txt_ID.Text))
+            {
+                MessageBox.Show("Por favor, ingrese el ID de la sucursal a eliminar.");
+                return;
+            }
             int id = int.Parse(txt_ID.Text);
             controlador.Eliminar(id);
             MessageBox.Show("Sucursal eliminada");

@@ -80,7 +80,7 @@ namespace Modelo
             }
         }
         // Para obtener el historial de compras de un cliente 
-        public object ObtenerHistorialCompras(int idCliente)
+        public string ObtenerHistorialCompras(int idCliente)
         {
             using (var context = new Context())
             {
@@ -88,21 +88,30 @@ namespace Modelo
                     .Include(c => c.ventas)
                     .FirstOrDefault(c => c.ClienteID == idCliente);
 
-                if (cliente == null) return "Cliente no encontrado";
+                if (cliente == null)
+                    return "Cliente no encontrado";
 
-                double descuento = cliente.MinoristaMayorista ? descuentoMayorista : descuentoMinorista;
+                double descuento = cliente.MinoristaMayorista ? 0.20 : 0.00;
 
-                return new
+                string mensaje = "";
+                mensaje += "====================================\n";
+                mensaje += "        HISTORIAL DE COMPRAS        \n";
+                mensaje += "====================================\n";
+                mensaje += $"Cliente: {cliente.Nombre} {cliente.Apellido}\n";
+                mensaje += $"Tipo: {(cliente.MinoristaMayorista ? "Mayorista" : "Minorista")}\n";
+                mensaje += "------------------------------------\n";
+
+                foreach (var v in cliente.ventas)
                 {
-                    Cliente = $"{cliente.Nombre} {cliente.Apellido}",
-                    Tipo = cliente.MinoristaMayorista ? "Mayorista" : "Minorista",
-                    Compras = cliente.ventas.Select(v => new
-                    {
-                        v.VentaID,
-                        v.Monto,
-                        MontoConDescuento = v.Monto * (1 - descuento)
-                    }).ToList()
-                };
+                    double montoConDesc = v.Monto * (1 - descuento);
+
+                    mensaje += $"Venta ID: {v.VentaID}\n";
+                    mensaje += $"Monto Original: ${v.Monto:N2}\n";
+                    mensaje += $"Monto con Descuento: ${montoConDesc:N2}\n";
+                    mensaje += "------------------------------------\n";
+                }
+
+                return mensaje;
             }
         }
 

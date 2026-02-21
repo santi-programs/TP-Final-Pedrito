@@ -18,6 +18,7 @@ namespace Controlador
 
         private readonly GestionVentas gestion = GestionVentas.ObtenerInstancia();
 
+        public List<Venta> Listar() => gestion.ListarVentas();
         public void Agregar(Venta v) => gestion.AgregarVenta(v);
         public void Modificar(Venta v) => gestion.ModificarVenta(v);
         public void Eliminar(int id) => gestion.EliminarVenta(id);

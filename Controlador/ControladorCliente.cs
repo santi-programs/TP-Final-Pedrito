@@ -22,7 +22,7 @@ namespace Controlador
         public void Modificar(Cliente c) => gestion.ModificarCliente(c);
         public void Eliminar(int id) => gestion.EliminarCliente(id);
         public double Descuento(int idcliente, double precioBase) => gestion.CalcularDescuento(idcliente, precioBase);
-        public object HistorialCompras(int idCliente) => gestion.ObtenerHistorialCompras(idCliente);
+        public string HistorialCompras(int idCliente) => gestion.ObtenerHistorialCompras(idCliente);
 
 
     }

@@ -61,7 +61,8 @@ namespace Vista
                 Monto = monto,
                 metodoPago = cbo_MetodoPago.Text,
                 Fecha = dtp_Fecha.Value,
-                ClienteID = (int)cbo_Cliente.SelectedValue
+                ClienteID = (int)cbo_Cliente.SelectedValue,
+                VendedorID= (int)cbo_Vendedor.SelectedValue
             };
 
 

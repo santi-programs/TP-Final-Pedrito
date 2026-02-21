@@ -18,6 +18,7 @@ namespace Vista
         private List<ReporteConsulta> datos;
         private TipoReporte tipo;
         private ControladorReporte controlador;
+        private Venta venta;
 
         public VistaReporteVentas(List<ReporteConsulta> datos, TipoReporte tipo)
         {
@@ -25,6 +26,7 @@ namespace Vista
             this.datos = datos;
             this.tipo = tipo;
             controlador = new ControladorReporte();
+            venta = new Venta();
             CargarReporte();
         }
         private void CargarReporte()

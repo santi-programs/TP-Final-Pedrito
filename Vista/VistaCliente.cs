@@ -110,7 +110,9 @@ namespace Vista
 
             int id = int.Parse(txt_ID.Text);
 
-            //Opcion de mostrar en DataGridView o con un form de readOnly
+            string mensaje = controlador.HistorialCompras(id);
+
+            MessageBox.Show(mensaje);       
 
         }
 

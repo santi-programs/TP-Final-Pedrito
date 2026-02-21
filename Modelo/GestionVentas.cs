@@ -59,39 +59,48 @@ namespace Modelo
             }
             catch (DbUpdateException ex)
             {
-                // Manejo de errores
+              
                 throw new Exception("Error al guardar la venta: " + ex.InnerException?.Message, ex);
             }
         }
-       
-           public void ModificarVenta(Venta v)
-           {
-                using (var context = new Context())
-                {
-                    // ⭐ Verificar que el producto y cliente existan
-                    var productoExiste = context.Producto.Any(p => p.ProductoID == v.ProductoID);
-                    var clienteExiste = context.Cliente.Any(c => c.ClienteID == v.ClienteID);
-                    var vendedorExiste = context.Vendedor.Any(ve => ve.VendedorID == v.VendedorID);
+
+        public void ModificarVenta(Venta v)
+        {
+            using (var context = new Context())
+            {
+                var productoExiste = context.Producto.Any(p => p.ProductoID == v.ProductoID);
+                var clienteExiste = context.Cliente.Any(c => c.ClienteID == v.ClienteID);
+                var vendedorExiste = context.Vendedor.Any(ve => ve.VendedorID == v.VendedorID);
 
                 if (!productoExiste)
-                    {
-                         throw new Exception("El producto seleccionado no existe");
-                    }
+                    throw new Exception("El producto seleccionado no existe");
 
-                   if (!clienteExiste)
-                   {
-                        throw new Exception("El cliente seleccionado no existe");
-                   }
+                if (!clienteExiste)
+                    throw new Exception("El cliente seleccionado no existe");
+
                 if (!vendedorExiste)
-                { 
                     throw new Exception("El vendedor seleccionado no existe");
+
+                context.Venta.Update(v);
+
+                var reporte = context.ReporteConsulta
+                    .FirstOrDefault(r => r.ReporteConsultaID == v.VentaID);
+
+                if (reporte != null)
+                {
+                    var producto = context.Producto.Find(v.ProductoID);
+
+                    reporte.Fecha = v.Fecha;
+                    reporte.Producto = producto.Nombre;
+                    reporte.Sucursal = producto.Sucursal;
+                    reporte.VendedorID = v.VendedorID;
+                    reporte.Monto = v.Monto;
                 }
 
-                    context.Venta.Update(v);
-                    context.SaveChanges();
-                }
-           }
-        
+                context.SaveChanges();
+            }
+        }
+
         public void EliminarVenta(int id)
         {
             using (var context = new Context())
